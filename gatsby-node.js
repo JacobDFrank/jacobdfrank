@@ -36,7 +36,7 @@ exports.createPages = ({
           path: `/projects${node.frontmatter.URLpath}`,
           component: path.resolve('./src/components/ProjectLayout.jsx'),
           context: {
-            URLpath: node.frontmatter.URLpath,
+            URLpath: node.frontmatter.URLpath, //takes the path that is in the markdown and stores the file there
           }
         });
       });
@@ -45,4 +45,4 @@ exports.createPages = ({
   });
 };
 
-// create new 'createePages thigns to form new queries
+// create new 'createPages things to form new queries
