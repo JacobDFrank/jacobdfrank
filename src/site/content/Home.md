@@ -1,5 +1,5 @@
 ---
 title: 'Home'
 intro: 'Hey Hey—I'm Jacob Frank, a designer, student, developer, and aspiring manager'
-subIntro: '2018-09-09'
+subIntro: 'Currently redesigning folio site and working on Thought At Work. Incoming Experience designer on the design systems tooling team at Adobe.'
 ---
