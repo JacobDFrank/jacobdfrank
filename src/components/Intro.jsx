@@ -1,16 +1,44 @@
 import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
 
-const Intro = function statelessFunctionComponentClass() {
-  return (
-    <section>
-      <h2 style={{ paddingBottom: 8 + 'px' }}>
-        <b>Name's Jacob, and this here's my website. I'm a designer, developer, and aspiring manager.
-        </b>
-      </h2>
-      <code className="meta-data code" style={{ fontSize: 0.7 + 'em' }}>Currently redesigning my portfolio and working on <a className="faux-link" href="https://www.thoughtatwork.org">Thought At Work</a>. Incoming Experience designer on the design systems tooling team at Adobe.
-      </code>
-    </section>
-  );
-};
+const HOMEPAGE_QUERY = graphql`
+query HomePageQuery {
+  allMarkdownRemark(
+    filter: { fileAbsolutePath: { regex: "\/content/" } },
+  ) {
+    edges {
+      node {
+        id
+        frontmatter {
+          title
+          intro
+          subIntro
+        }
+      }
+    }
+  }
+}
+`;
+
+const Intro = () => (
+  <React.Fragment>
+    <StaticQuery
+      query={HOMEPAGE_QUERY}
+      render={({ allMarkdownRemark }) => (
+        allMarkdownRemark.edges.map(({ node }) => (
+          <section>
+            <h2 style={{ paddingBottom: 8 + 'px' }}>
+              <b>{node.frontmatter.intro}
+              </b>
+            </h2>
+            <code className="meta-data code" style={{ fontSize: 0.7 + 'em' }}>
+              {node.frontmatter.subintro}
+            </code>
+          </section>
+        ))
+      )}
+    />
+  </React.Fragment>
+);
 
 export default Intro;
