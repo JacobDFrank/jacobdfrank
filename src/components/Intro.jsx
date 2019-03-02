@@ -32,9 +32,8 @@ const Intro = () => (
               </b>
             </h2>
             <code className="meta-data code" style={{ fontSize: 0.7 + 'em' }}>
-              
+              {node.frontmatter.subIntro}
             </code>
-            {node.frontmatter.subIntro}
           </section>
         ))
       )}
