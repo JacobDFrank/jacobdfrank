@@ -34,7 +34,7 @@ const Intro = () => (
             <code className="meta-data code" style={{ fontSize: 0.7 + 'em' }}>
               
             </code>
-            {node.frontmatter.subintro}
+            {node.frontmatter.subIntro}
           </section>
         ))
       )}
