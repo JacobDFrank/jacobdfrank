@@ -1,10 +1,10 @@
 ---
 title: Home
 intro: >-
-  Test Hey Hey—I'm Jacob Frank, a designer, student, developer, and aspiring
-  manager
+  Hi, I'm Jacob Frank, and this here's my website. I think of myself as a
+  designer, developer, and aspiring manager.
 subIntro: >-
-  Test Currently redesigning folio site and working on Thought At Work. Incoming
-  Experience designer on the design systems tooling team at Adobe.
+  I'm currently redesigning my portfolio and working on Thought At Work.
+  Incoming Experience designer on the design systems tooling team at Adobe.
 ---
 
