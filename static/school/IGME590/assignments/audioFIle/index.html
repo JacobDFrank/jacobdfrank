@@ -1,0 +1,32 @@
+<!doctype html>
+
+<html lang='en'>
+
+<body> </body>
+
+<script>
+    play(2);
+    function play(rate){
+        const ctx = new AudioContext()
+        const req = new XMLHttpRequest()
+
+        // req.open('GET', './coin.mp3')
+        req.open('GET', './hop.mp3')
+        req.responseType = 'arraybuffer'
+
+        req.onload = function() {
+            console.log(req.response)
+            ctx.decodeAudioData(req.response, function(buffer) {
+                const player = ctx.createBufferSource()
+                player.buffer = buffer
+
+                player.playbackRate.value = rate
+                player.connect(ctx.destination)
+                player.start()
+            })
+        }
+        req.send()
+    }
+</script>
+
+</html>

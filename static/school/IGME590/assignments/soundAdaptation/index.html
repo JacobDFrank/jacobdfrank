@@ -1,0 +1,296 @@
+<!--
+For my modification to conway's game of life
+I decided to play with the idea of life.
+When thinking about this idea of life I decided
+to take the approach of thinking about Conway's game
+and the grid itself as though it were the world's species
+and we were seeing life and evolution take place. To show
+this I divided the grid itself into colors to represent
+different species and life. The blue bar at the top is supposed
+to represent the water. As you look down the lighter blue
+and purplish color is supposed to represent other creatures. The
+green for trees and as it gets lower, the mammals and other
+animals, as well as humans appear.
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Make some noise</title>
+    <script src='../js/randomColor.js'></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            height: 80vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas></canvas>
+    <script>
+        "use strict";
+
+        let grid, tempGrid, spotWidth, spotHeight;
+        let startScene = 0;
+
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+        const audioCtx = new AudioContext()
+        const req = new XMLHttpRequest()
+        req.responseType = 'arraybuffer'
+
+        //Makes the grid more readable and understandable
+        let fieldWidth = Math.round(window.innerWidth / 10);
+        let fieldHeight = Math.round(window.innerHeight / 8);
+
+        let runAutomata = function() {
+            init();
+            animate();
+        }
+
+        runAutomata();
+
+        // Needs the size of the browser divided a bit to make it more viewable
+        function init() {
+            createRandGrid(fieldWidth, fieldHeight);
+
+            // round causes strange mapping issues so i found ceiling or object.ceil
+            //which goes to the nearest upper integer http://www.w3schools.com/jsref/jsref_ceil.asp
+            // Spot is each box on the grid, each possible Spot
+            spotWidth = Math.ceil(canvas.width / fieldWidth);
+            spotHeight = Math.ceil(canvas.height / fieldHeight);
+
+            animate();
+        }
+
+        // Creates random grid for all the little critters to evolve in
+        function createRandGrid(width, height) {
+            grid = new Array(width);
+            tempGrid = new Array(height);
+
+            //Loops through each part of grid and randomly fills it
+            for (let x = 0; x < width; x++) {
+                // tempGrid[x] =  grid[x] = new Array(height);
+                tempGrid[x] = new Array(height);
+                grid[x] = new Array(height);
+
+                // changed
+                for (let y = 0; y < height; y++) {
+                    tempGrid[x][y] = false;
+                    if (Math.random() > 0.5) {
+                        grid[x][y] = false;
+                    } else {
+                        grid[x][y] = true;
+                    }
+                }
+            }
+        }
+        // Called to animate and start the automation
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // First frame and keeps updating perframe
+            startScene++;
+
+            // The framerate
+            if (startScene % 15 != 0) {
+                return true;
+            }
+
+            draw();
+
+            //Swapping the grids
+            for (let xTemp = 0; xTemp < fieldWidth; xTemp++) {
+
+                for (let yTemp = 0; yTemp < fieldHeight; yTemp++) {
+
+                    tempGrid[xTemp][yTemp] = grid[xTemp][yTemp];
+                }
+            }
+            // Running the automata on each spot
+            for (let x = 0; x < fieldWidth; x++) {
+                for (let y = 0; y < fieldHeight; y++) {
+                    // Start the moving of the spots
+                    animateSpot(x, y);
+                }
+            }
+        }
+        //Running each spot
+        function animateSpot(x, y) {
+            let neighbors = 0;
+            // Calculate the number of live neighbors for the current spot
+            for (let xDif = -1; xDif <= 1; xDif++) {
+                for (let yDif = -1; yDif <= 1; yDif++) {
+
+                    let horizNeighbors = x + xDif;
+                    let vertNeighbors = y + yDif;
+
+                    if (xDif == 0 && yDif == 0) {
+                        continue;
+                    }
+                    // If statement for boundaries of grid
+                    if (horizNeighbors <= 0 || vertNeighbors <= 0 ||
+                        horizNeighbors >= fieldWidth || vertNeighbors >= fieldHeight) {
+                        continue;
+                    }
+                    // Adding the neighbors
+                    if (tempGrid[horizNeighbors][vertNeighbors]) {
+                        neighbors++;
+                    }
+                }
+            }
+            // Different rules for living or dying critters
+            if (tempGrid[x][y]) {
+                if (neighbors < 2 || neighbors > 3) {
+                    grid[x][y] = false;
+                }
+            } else {
+                if (neighbors == 3) {
+                    grid[x][y] = true;
+                }
+            }
+        }
+
+
+            // req.open('GET', './coin.mp3')
+
+            play(1.1, "./atmosphere.wav", 0.25, true)
+
+
+            function play(rate, sound, volume, loop) {
+
+                let gainNode = audioCtx.createGain();
+                req.open('GET', sound)
+                req.responseType = 'arraybuffer'
+
+                req.onload = function() {
+                    console.log(req.response)
+                    audioCtx.decodeAudioData(req.response, function(buffer) {
+                        const player = audioCtx.createBufferSource()
+                        player.buffer = buffer
+                        player.playbackRate.value = rate
+                        player.connect(gainNode);
+                        gainNode.connect(audioCtx.destination)
+                        player.start()
+                        gainNode.gain.value = volume;
+                        player.loop = loop;
+                    })
+                }
+                req.send()
+            }
+        let counter = 0;
+        let played = true;
+        //Drawing the animation to the screen
+        function draw() {
+            let rectPosX, rectPosY, rectWidth, rectHeight;
+            // Assigning each position on the the grid to being alive or not
+            // White is alive, black is dead
+            for (let x = 0; x < fieldWidth; x++) {
+                for (let y = 0; y < fieldHeight; y++) {
+                    // console.log(counter)
+
+                    if (grid[x][y]) {
+                        counter++;
+                        if (counter == 1000) {
+                            played = false;
+                            counter = 0;
+                        }
+                        if (y > fieldHeight * 0.5) {
+                            ctx.fillStyle = randomColor({
+                                luminosity: 'dark',
+                                hue: 'blue'
+                            });
+                        }
+                        if (y > fieldHeight * .1 && y < fieldHeight * .2) {
+                            ctx.fillStyle = randomColor({
+                                luminosity: 'light',
+                                hue: 'blue'
+                            });
+                            if (played == false){
+                                play(1, "./coin.mp3", 0.7, false);
+                                played = true;
+                            }
+                        }
+                        if (y > fieldHeight * .2 && y < fieldHeight * .3) {
+                            ctx.fillStyle = randomColor({
+                                luminosity: 'light',
+                                hue: 'green'
+                            });
+                            if (played == false){
+                                play(1, "./bink.mp3", 0.7, false);
+                                played = true;
+                            }
+                        }
+                        if (y > fieldHeight * .3 && y < fieldHeight * .4) {
+                            ctx.fillStyle = randomColor({
+                                luminosity: 'dark',
+                                hue: 'green'
+                            });
+                            if (played == false){
+                                play(1, "./goop.wav", 0.7, false);
+                                played = true;
+                            }
+                        }
+                        if (y > fieldHeight * .4 && y < fieldHeight * .5) {
+                            ctx.fillStyle = randomColor({
+                                luminosity: 'dark',
+                                hue: 'orange'
+                            });
+                            if (played == false){
+                                play(1, "./jump.wav", 0.7, false);
+                                played = true;
+                            }
+                        }
+                        if (y > fieldHeight * .5 && y < fieldHeight * .6) {
+                            ctx.fillStyle = randomColor({
+                                luminosity: 'light',
+                                hue: 'orange'
+                            });
+                            if (played == false){
+                                play(1, "./blip.wav", 0.7, false);
+                                played = true;
+                            }
+                        }
+                        if (y > fieldHeight * .6) {
+                            ctx.fillStyle = randomColor({
+                                luminosity: 'light',
+                                hue: 'orange'
+                            });
+                            if (played == false){
+                                play(1, "./dit.wav", 0.7, false);
+                                played = true;
+                            }
+                        }
+                    } else {
+                        ctx.fillStyle = '#F8F8F8';
+                    }
+                    if (y < fieldHeight * 0.02) {
+                        ctx.fillStyle = randomColor({
+                            luminosity: 'dark',
+                            hue: 'blue'
+                        });
+                    }
+                    // For the size of each of the spots in the grid
+                    // Based on the iteration of the grid
+                    rectPosX = x * spotWidth;
+                    rectPosY = y * spotHeight;
+                    // For the boundaries on the top and the left
+                    rectWidth = (x + 1) * spotWidth;
+                    rectHeight = (y + 1) * spotHeight;
+
+                    ctx.fillRect(rectPosX, rectPosY, rectWidth, rectHeight);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
