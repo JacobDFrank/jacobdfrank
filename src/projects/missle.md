@@ -12,7 +12,7 @@ timePeriod: 2 Weeks
 Spent about two weeks or so doing a redesign for an alert system. The project was really just an exercise in ui design but I wanted to go a bit harder. The problem was simple based on numerous [__articles__](https://qz.com/1179937/hawaii-missile-alert-blame-terrible-interface-design-for-the-hawaii-debacle/)  showing how the Hawaii missle alert threat was the fault of bad design.
 
 <br/>
-<a class="faux-link" target="_blank" href="https://www.jacobdfrank.com/assets/misslePrototype/index.html#/screens">Use the prototype</a>
+<a target="_blank" href="https://www.jacobdfrank.com/assets/misslePrototype/index.html#/screens">Use the prototype</a>
 
 <br/>
 <br/>
@@ -49,7 +49,7 @@ While researching for this project I started with looking up as much as I could 
 ####Sketches
 For my sketches I stuck with what I knew but also started learning about the backend of the system I was redesigining. It turns out this whole project was really just a design for a software that interacted with a government API called IPAWS.
 
-<a class="faux-link" href="https://www.fema.gov/media-library-data/1463674830481-16ed0020684ba8cd263ba88f54a48c95/TemplateEmergencyCommPlans_IPAWS-508_05192016.pdf">Learn about IPAWS here</a>
+<a href="https://www.fema.gov/media-library-data/1463674830481-16ed0020684ba8cd263ba88f54a48c95/TemplateEmergencyCommPlans_IPAWS-508_05192016.pdf">Learn about IPAWS here</a>
 
 <br/>
 <br/>
