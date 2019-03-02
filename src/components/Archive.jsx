@@ -3,9 +3,12 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 
 const POST_ARCHIVE_QUERY = graphql`
       query ArchiveQuery {
-        allMarkdownRemark(limit: 6, sort: {
-          order: DESC,
-          fields: [frontmatter___date]
+        allMarkdownRemark(
+          limit: 6,
+          filter: { fileAbsolutePath: {regex : "\/projects/"} },
+          sort: {
+            order: DESC,
+            fields: [frontmatter___date]
         }) {
           edges {
             node {
@@ -29,7 +32,6 @@ const Archive = () => (
     render={({ allMarkdownRemark }) =>
       (
         <React.Fragment>
-          <h3>Archive</h3>
           <section className="projects grid">
             {
               allMarkdownRemark.edges.map(project => (

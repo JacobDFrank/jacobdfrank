@@ -1,23 +1,18 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import Layout from '../components/Layout';
-import Image from '../components/Image';
+import MyImg from '../components/MyImg';
 import SEO from '../components/Seo';
 import Archive from '../components/Archive';
 import Listing from '../components/Listing';
+import Intro from '../components/Intro';
 
-const IndexPage = ({location}) => (
+const IndexPage = ({ location }) => (
   <Layout location={location}>
-    <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <Archive/>
-    <Listing />
-    <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <SEO title="Home" keywords={['portfolio', 'designer', 'adobe']} />
+    {/* <MyImg src="bg.jpg" /> */}
+    <Intro />
+    {/* <Listing /> */}
+    <Archive />
   </Layout>
 );
 

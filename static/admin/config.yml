@@ -9,9 +9,25 @@ public_folder: /img
 collections:
   - name: 'team'
     label: 'Team'
+    label_singular: 'Team Member'
     folder: 'src/team'
     create: true
     slug: '{{slug}}'
     fields:
       - { label: 'Team Member', name: 'title', widget: 'string' }
       - { label: 'Bio', name: 'bio', widget: 'markdown' }
+  - name: 'projects'
+    label: 'Projects'
+    label_singular: 'Project'
+    folder: 'src/projects'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - {label: 'File Name', name: 'URLpath', widget: 'string', pattern: ['^\/[/.a-zA-Z0-9-]+$', 'Must start with a forward slash and not contain special characters besides: /, .,  -']}
+      - { label: 'Project Title', name: 'title', widget: 'string' }
+      - { label: 'Publish project?', name: 'published', widget: 'boolean' }
+      - { label: 'Publish Date', hint: 'Projects will be listed in descending order based on date', name: 'date', widget: 'date', default: '2019-01-01', format: 'MMMM DD, YYYY'}
+      - { label: 'Project Description', name: 'title', widget: 'string', pattern: ['^.{1,85}$', 'Must have no more than 85 characters']}
+      - { label: 'Project Tags', name: 'tags', widget: 'string', pattern: ['^.{1,44}$', 'Must have no more than 44 characters']}
+      - { label: 'Time Period', hint: 'Ex: Summer 2017 or Annually, Completed Each Fall', name: 'timePeriod', widget: 'string', pattern: ['^.{1,32}$', 'Must have no more than 32 characters']}
+      - { label: 'Project Case Study', hint: 'Write about it, you can do it in markdown', name: 'body', widget: 'markdown'}

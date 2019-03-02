@@ -2,6 +2,7 @@
 
 const path = require('path');
 
+//creating pages for only the projects (which are filtered based on the absolute path)
 exports.createPages = ({
   graphql,
   actions
@@ -12,7 +13,11 @@ exports.createPages = ({
   return new Promise((resolve) => {
     graphql(`
       {
-        allMarkdownRemark {
+        allMarkdownRemark(filter: {
+            fileAbsolutePath: {
+              regex: "\/projects/"
+            }
+          }) {
           edges {
             node {
               html
