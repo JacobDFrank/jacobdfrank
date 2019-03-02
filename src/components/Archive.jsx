@@ -37,7 +37,7 @@ const Archive = () => (
               allMarkdownRemark.edges.map(project => (
                 <div className="project grid__col grid__col--1-of-3" key={project.node.frontmatter.URLpath}>
                   <span className="meta-data code">{project.node.frontmatter.tags}</span>
-                  <Link to={`/projects${project.node.frontmatter.URLpath}`}>
+                  <Link to={`/projects${project.node.frontmatter.URLpath}`} className="faux-link">
                     <span>{project.node.frontmatter.description}</span>
                   </Link>
                 </div>

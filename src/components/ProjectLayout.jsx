@@ -12,6 +12,7 @@ export default class ProjectLayout extends Component {
   render() {
     const { markdownRemark } = this.props.data;
     const { location } = this.props;
+    console.log(location);
     return (
       <Layout location={location}>
         <section className="intro">

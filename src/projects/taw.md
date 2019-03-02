@@ -11,7 +11,7 @@ timePeriod: 'Annually, Completed Each Fall'
 ###Note
 **Currently out of date, update soon to come**
 <br/>
-Check out <a href="http://www.thoughtatwork.org">thoughtatwork.org</a> for more details
+Check out <a class="faux-link" href="http://www.thoughtatwork.org">thoughtatwork.org</a> for more details
 
 <br/>
 <br/>
@@ -22,7 +22,7 @@ Creation of a design conference website. Tasked with forming a team and building
 
 <br/>
 
-<a href="http://thoughtatwork.cias.rit.edu/">Visit the Site</a>
+<a class="faux-link" href="http://thoughtatwork.cias.rit.edu/">Visit the Site</a>
 
 <br/>
 <br/>
