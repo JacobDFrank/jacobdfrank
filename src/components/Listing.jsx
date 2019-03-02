@@ -22,7 +22,6 @@ query ListingQuery {
       }
     }
 }
-
 `;
 
 // how to do this is shown in video 15 https://www.youtube.com/watch?v=9VosY2-dyf0

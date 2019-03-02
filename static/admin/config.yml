@@ -7,16 +7,16 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - label: "Pages"
-    name: "pages"
+  - name: "content"
+    label: "Pages"
     files:
       - label: "Home Page"
         name: "Home"
-        file: "src/site/content/Home.md"
+        file: "src/content/Home.md"
         fields:
           - {label: Title, name: title, widget: string}
           - {label: Intro, name: intro, widget: string}
-          - {label: subIntro, name: subIntro, widget: string}
+          - {label: subIntro, name: subIntro, widget: markdown}
   - name: 'team'
     label: 'Team'
     label_singular: 'Team Member'
