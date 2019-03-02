@@ -3,7 +3,7 @@ import React from 'react';
 
 const Header = function statelessFunctionComponentClass() {
   return (<header>
-    <Link to="/" className="faux-link"> <span id="channeled-text">Jacob Frank</span></Link>
+    <Link to="/">Jacob Frank</Link>
   </header>);
 };
 

@@ -16,7 +16,7 @@ Tasked with redesigning a website that hadn’t been updated in more than a deca
 
 <br/>
 
-<a class="faux-link" href="http://www.hawkesmediagroup.com/">Visit the Site</a>
+<a href="http://www.hawkesmediagroup.com/">Visit the Site</a>
 
 <br/>
 <br/>
@@ -86,7 +86,7 @@ During the development of the site I found a way to give the client access to a 
 
 
 ####Check it Out
-The current website can be seen <a class="faux-link" href="http://www.hawkesmediagroup.com/">here</a>
+The current website can be seen <a href="http://www.hawkesmediagroup.com/">here</a>
 <br/>
 <br/>
 <br/>

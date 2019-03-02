@@ -12,7 +12,7 @@ timePeriod: 'Summer 2017'
 I spent the past summer in a paid internship with B-Reel in New York City. I primarily worked with the Development Team, helping to develop and design the implementation of components for clients such as AMEX and Quantcast. This was a great opportunity and incredible learning experience.
 
 <br/>
-<a class="faux-link" href="https://www.b-reel.com">Visit their Site</a>
+<a href="https://www.b-reel.com">Visit their Site</a>
 
 <br/>
 <br/>
