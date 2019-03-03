@@ -31,8 +31,12 @@ const Intro = () => (
               <b>{node.frontmatter.intro}
               </b>
             </h2>
-            <code className="meta-data code" style={{ fontSize: 0.7 + 'em' }}>
-              {node.frontmatter.subIntro}
+            <code className="meta-data code" style={{ fontSize: 0.7 + 'em' }}
+              dangerouslySetInnerHTML={{
+                __html:
+                  node.frontmatter.subIntro
+              }}
+            >
             </code>
           </section>
         ))
