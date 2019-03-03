@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Layout from './Layout';
-import { PageQuery, graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 
 // Static query can be used anywhere. Doesn't accept variables, can't use context.
 

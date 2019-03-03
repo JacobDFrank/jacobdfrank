@@ -1,9 +1,9 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import MyImg from '../components/MyImg';
+// import MyImg from '../components/MyImg';
 import SEO from '../components/Seo';
 import Archive from '../components/Archive';
-import Listing from '../components/Listing';
+// import Listing from '../components/Listing';
 import Intro from '../components/Intro';
 
 const IndexPage = ({ location }) => (
