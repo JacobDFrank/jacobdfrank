@@ -1,0 +1,19 @@
+{
+  "name": "jacobfrank",
+  "version": "1.0.0",
+  "description": "portfolio website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "portfolio",
+    "creativecode",
+    "design"
+  ],
+  "author": "jacobdfrank",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp-browserify": "^0.5.1"
+  }
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    </style>
+
+</head>
+
+<body>
+    <canvas id="gl"></canvas>
+    <canvas id="texture"></canvas>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+    <script id='vertex' type='x-shader/x-vertex'>
+        attribute vec2 aPosition;
+        attribute vec2 aTextureCoord;
+        varying vec2 vTexCoord;
+        void main() {
+            vTexCoord = aTextureCoord;
+            gl_Position = vec4(aPosition, 0.0, 1.0);
+        }
+    </script>
+    <script id='fragment' type='x-shader/x-fragment'>
+        precision mediump float;
+        varying vec2 vTexCoord;
+        uniform sampler2D uSampler;
+        void main() {
+            vec4 t0 = texture2D(uSampler, vec2(vTexCoord.s, vTexCoord.t));
+            vec4 t1 = vec4(0.5, 0.6, 0.9, 0.4);
+            gl_FragColor = mix(t0, t1, t1.a);
+        }
+
+    </script>
+    <!-- <script src='dist/js/app.js'></script> -->
+    <script src='js/index.js'></script>
+</body>
+
+
+<html>

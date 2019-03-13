@@ -1,0 +1,146 @@
+<script type="x-shader/x-vertex" id="vertexShader">
+// <!-- <script> -->
+    varying vec2 vUv;
+
+    void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    } // needed for a GLSL Vertex shader
+</script>
+
+<script  type="x-shader/x-fragment" id="fragmentShaderDefault">
+// <!-- <script> -->
+    int mid;
+    float r;
+    uniform float time; //time
+    uniform vec2 resolution; //screen resolution
+    uniform sampler2D tPrev;
+    uniform int cellForm;
+    int sum;
+    float size = 0.9;
+
+    varying vec2 vUv;
+
+    vec2 normalizedPosition() {
+        return 2.0 * vUv + -1.0; //normalizes the position of the vector
+    }
+
+    // because apparently the regular one line glsl rand isn't okay..
+    highp float rand(vec2 co) {
+        highp float a = 12.9898;
+        highp float b = 78.233;
+        highp float c = 43758.5453;
+        highp float dt = dot(co.xy, vec2(a, b));
+        highp float sn = mod(dt, 3.14);
+        return fract(sin(sn) * c);
+    }
+
+    const int R = 3; // Range: in the vicinity of Range
+    const int T = 7; // Threshold: Number of neighbors with state required for state transition
+    const int C = 5; // Colors: Number of Colors states (0..C-1)
+    const bool N = false; // Neighborhood Types near the Neighborhood. Moore (NM) if false, Von Neumann (NN) if true
+
+    // Place pixels randomly on screen
+    float initialize() {
+        r = rand(gl_FragCoord.xy);
+        //random start
+        return floor(r * float(C)) / float(C);
+    }
+
+    int cellState(vec2 newCell) {
+        // Taking spot on the uniform and altering the color of it
+        return int((float(C) * texture2D(tPrev, vec2(mod(vUv.x + newCell.x, 1.0), mod(vUv.y + newCell.y, 1.0)))) + size);
+    }
+    // cell state matched and removed
+    bool match(int mid, vec2 newCell) {
+        if (mid == cellState(newCell))
+            return true;
+
+        return false;
+    }
+
+    int sumNM(int mid, vec2 distanceResolution) {
+        // Moore neighborhood
+        sum = 0;
+        // Makes a square for the pattern to be generated in
+        for (int x = -R; x <= R; ++x) {
+            for (int y = -R; y <= R; ++y) {
+                if (x == 0 && y == 0)
+                    break;
+                /* each one of these changes the look of the texture by applying a match needed
+                for the texture to change color
+                */
+                if (cellForm == 1) {
+                    if (match(mid, vec2((float(x)) * distanceResolution.x, (float(y)) * distanceResolution.y))) // R3/T7/C5  simliar to the regular automata?
+                    sum += 1;
+                }
+                if (cellForm == 2){
+                    if (match(mid, vec2(tan(float(x)) * distanceResolution.x, cos(float(y)) * distanceResolution.y))) // R3/T8/C6 //rain
+                    sum += 1;
+                }
+                if (cellForm == 3){
+                    if (match(mid, vec2(sqrt(float(x)) * distanceResolution.x, sqrt(float(y)) * distanceResolution.y))) // R3/T7/C5 diagnol moths
+                    sum += 1;
+                }
+                if (cellForm == 4) {
+                    if (match(mid, vec2(atan(float(x)) * distanceResolution.x, sqrt(float(y)) * distanceResolution.y))) // R3/T10/C6 //moths
+                    sum += 1;
+                }
+                if (cellForm == 5) {
+                    if (match(mid, vec2(asin(float(x)) * distanceResolution.x, (float(y)) * distanceResolution.y))) // R3/T7/C6 //paint rows
+                    sum += 1;
+                }
+                if (cellForm == 6) {
+                     if (match(mid, vec2(exp(float(x)) * distanceResolution.x, acos(float(y)) * distanceResolution.y))) // R5/T14/C5 //paint columns
+                     sum += 1;
+                }
+                if (cellForm == 7) {
+                    if (match(mid, vec2(exp(float(x)) * distanceResolution.x, atan(float(y)) * distanceResolution.y))) // R5/T14/C5 //up down rain
+                    sum += 1;
+                }
+
+            }
+        }
+        return sum;
+    }
+
+    // Finds out what next pixel will be based on cellState
+    // Where the actual formula happens
+    float calc() {
+
+        // Distance of 1 pixel
+        vec2 distanceResolution = (1.0) / resolution;
+
+        // Calls to cellState for newCell or dead
+        int cell = cellState(vec2(0.0, 0.0));
+
+        // find next state of cell
+        mid = cell - 1;
+        if (mid < 0) mid = C - 1;
+
+        // Count the number of neighbors with the next state
+        int sum = sumNM(mid, distanceResolution);
+
+        // Determine the next state of the cell
+        if (T <= sum) cell = mid;
+
+        return float(cell) / float(C);
+    }
+
+    void main() {
+        float r = 0.0;
+
+        if (time < 1.0) {
+            r = initialize();
+        } else {
+            r = calc();
+        }
+        // RGBA fragmentShader
+        gl_FragColor = vec4(r, .3, .5, 0);
+    }
+</script>
+
+
+<canvas id="myCanvas"></canvas>
+<!-- <script src='./dist/js/app.js'></script> -->
+<script src='./js/index.js'></script>
