@@ -1,3 +1,5 @@
 # Redirects from what the browser requests to what we serve
 
-https://www.2016.jacobdfrank.com/* /static/2016Folio/:splat 200!
+/blog/my-post.php  /blog/my-post
+/news              /blog
+/google            https://www.google.com
