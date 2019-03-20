@@ -13,6 +13,14 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sass',
     {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-96615084-1',
+        // Setting this parameter is optional
+        anonymize: false
+      }
+    },
+    {
       resolve: 'gatsby-plugin-postcss',
       options: {
         postCssPlugins: [require('postcss-preset-env')({
@@ -48,9 +56,7 @@ module.exports = {
         path: `${__dirname}/src/team`,
       },
     },
-    'gatsby-transformer-sharp',
     'gatsby-transformer-remark',
-    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest', // customize this so that when the site is saved in a bookmark, etc that the icon, color, and information can be stored on someone's device correctly
       // https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/
