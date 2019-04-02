@@ -5,10 +5,11 @@ const POST_ARCHIVE_QUERY = graphql`
       query ArchiveQuery {
         allMarkdownRemark(
           limit: 6,
-          filter: { fileAbsolutePath: {regex : "\/projects/"} },
+          filter: { fileAbsolutePath: {regex : "\/projects/"}, frontmatter: { published: { ne: false } } },
           sort: {
             order: DESC,
-            fields: [frontmatter___date]
+            fields: [frontmatter___date],
+            
         }) {
           edges {
             node {

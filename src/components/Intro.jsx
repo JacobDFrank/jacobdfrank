@@ -26,7 +26,7 @@ const Intro = () => (
       query={HOMEPAGE_QUERY}
       render={({ allMarkdownRemark }) => (
         allMarkdownRemark.edges.map(({ node }) => (
-          <section>
+          <section key='title'>
             <h2 style={{ paddingBottom: 8 + 'px' }}>
               <b>{node.frontmatter.intro}
               </b>
