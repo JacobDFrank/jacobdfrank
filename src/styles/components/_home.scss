@@ -27,6 +27,7 @@ body {
     font-smoothing: antialiased;
     color: $color-primary;
 }
+
 a {
     text-decoration: none;
     background-repeat: no-repeat;
@@ -58,6 +59,7 @@ a {
     opacity: 0.75;
     font-weight: 700;
 }
+
 .meta-data {
     &+h2 {
         margin-top: 0.5em;
@@ -70,6 +72,7 @@ a {
 
 section {
     padding: 3em 5em;
+    max-width: 1080px;
 }
 
 header {
@@ -165,6 +168,7 @@ footer {
 
 section.content {
     img {
+        max-width: 1080px;
         width: calc(85vw - 300px);
         min-width: 320px;
     }
