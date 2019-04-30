@@ -173,10 +173,15 @@ section.content {
         max-width: 540px;
         height: auto;
         margin: 40px 0;
-        @media screen and (max-width: $md) {
-          width: calc(50vw - 300px);
+    }
+
+    @media screen and (max-width: $md) {
+            img {
+                min-width: 75vw;
+                width: calc(50vw - 200px);
         }
     }
+
     padding-top: 0;
 
     .media {
