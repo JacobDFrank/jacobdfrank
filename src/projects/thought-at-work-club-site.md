@@ -4,7 +4,7 @@ title: Thought At Work Club Site
 published: true
 date: 'April 29, 2019'
 description: Creating a website for an interdisciplinary design club.
-tags: 'Management, Design, Development'
+tags: DESIGN / DEV / MANAGEMENT
 timePeriod: 6 Weeks
 ---
 <style type="text/css" rel="stylesheet">
