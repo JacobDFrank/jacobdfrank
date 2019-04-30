@@ -17,15 +17,6 @@ collections:
           - {label: Title, name: title, widget: string}
           - {label: Intro, name: intro, widget: string}
           - {label: subIntro, name: subIntro, widget: markdown}
-  - name: 'team'
-    label: 'Team'
-    label_singular: 'Team Member'
-    folder: 'src/team'
-    create: true
-    slug: '{{slug}}'
-    fields:
-      - { label: 'Team Member', name: 'title', widget: 'string' }
-      - { label: 'Bio', name: 'bio', widget: 'markdown' }
   - name: 'projects'
     label: 'Projects'
     label_singular: 'Project'

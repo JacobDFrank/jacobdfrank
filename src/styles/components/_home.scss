@@ -168,11 +168,15 @@ footer {
 
 section.content {
     img {
-        max-width: 1080px;
-        width: calc(85vw - 300px);
-        min-width: 320px;
+        width: auto;
+        display: block;
+        max-width: 540px;
+        height: auto;
+        margin: 40px 0;
+        @media screen and (max-width: $md) {
+          width: calc(50vw - 300px);
+        }
     }
-
     padding-top: 0;
 
     .media {
@@ -302,6 +306,7 @@ canvas.tease {
 @media screen and (min-width: 768px) {
     p {
         width: 65%;
+        word-wrap: normal;
     }
 }
 

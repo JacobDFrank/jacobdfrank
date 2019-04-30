@@ -17,13 +17,15 @@ const Layout = ({ children }) => (
             description
           }
         }
-      }
+    }
     `}
     render={() =>
       (
         <React.Fragment>
           <Header />
-          {children}
+          <div className="markdown-body">
+            {children}
+          </div>
           <Footer />
         </React.Fragment>
       )}
