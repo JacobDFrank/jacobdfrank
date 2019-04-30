@@ -14,14 +14,16 @@ export default class ProjectLayout extends Component {
     const { location } = this.props;
     return (
       <Layout location={location}>
-        <section className="intro">
-          <span className="meta-data code">{markdownRemark.frontmatter.tags} - {markdownRemark.frontmatter.timePeriod}</span>
-          <h2><b>{markdownRemark.frontmatter.title}</b> — {markdownRemark.frontmatter.description}</h2>
+        <div className="markdown-body">
+          <section className="intro">
+            <span className="meta-data code">{markdownRemark.frontmatter.tags} - {markdownRemark.frontmatter.timePeriod}</span>
+            <h2><b>{markdownRemark.frontmatter.title}</b> — {markdownRemark.frontmatter.description}</h2>
 
-        </section>
-        <section className="content" dangerouslySetInnerHTML={{
-          __html: markdownRemark.html
-        }} />
+          </section>
+          <section className="content" dangerouslySetInnerHTML={{
+            __html: markdownRemark.html
+          }} />
+        </div>
       </Layout>
     );
   }

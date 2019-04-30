@@ -23,9 +23,7 @@ const Layout = ({ children }) => (
       (
         <React.Fragment>
           <Header />
-          <div className="markdown-body">
-            {children}
-          </div>
+          {children}
           <Footer />
         </React.Fragment>
       )}
