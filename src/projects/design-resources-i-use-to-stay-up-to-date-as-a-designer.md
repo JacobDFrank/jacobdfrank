@@ -10,7 +10,7 @@ timePeriod: Updating every few months
 
 #### Apologies as most of these do not have links.
 
-## Books - Best thing you can learn from usually
+### Books - Best thing you can learn from usually
 - About Face by Cooper
 - Thoughtless Acts?: Observations on Intuitive Design
 - Design as Art
@@ -34,12 +34,12 @@ timePeriod: Updating every few months
 - Conceptual Models: Core to Good Design
 - [Writings by Bret Victor](http://worrydream.com/)
 - Design of Everyday Things
-## Forums
+### Forums
 - spectrum.chat
 - [twitter, I follow some cool folks you might want to](http://twitter.com/jacobdfrank)
 - product hunt
 - dribbble
-## Email Newsletters
+### Email Newsletters
 - [Webdesigner News](https://www.webdesignernews.com/)
 - [Kevin Rose email](https://www.kevinrose.com/)
 - [Subtraction](https://www.subtraction.com/2007/09/13/from-me-to-y/)
@@ -52,7 +52,7 @@ timePeriod: Updating every few months
 - [Neilson Norman](http://www.nngroup.com/articles/subscribe/)
 - [Visual Soldiers' Armory](https://armory.visualsoldiers.com/)For new tools that could be integral to your process.
 - [Hey Designer](https://heydesigner.com/newsletter/) another great general newsletter for product people and designers.
-## Sites
+### Sites
 - hacker news
 - Larry Cuban Education Design Blog
 - The Verge
@@ -65,11 +65,11 @@ timePeriod: Updating every few months
   - https://uxdesign.cc/
   - https://uxplanet.org/
 - Julie Zhuo Blog (Product Design VP @ Facebook)
-## Events
+### Events
 - Creative Mornings (Meh, but can be good)
 - TED
 - 99U
-# Podcasts & Video Series
+### Podcasts & Video Series
 - 99% Invisble
 - [Getting Real](https://www.youtube.com/channel/UCdx5Dk3EWTe2i8YDA7bfl6g)
 - Design Details (Great Interviews)
