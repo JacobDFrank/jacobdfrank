@@ -6,8 +6,6 @@ intro: >-
 subIntro: >-
   Currently redesigning my portfolio in Next.js and working at Adobe on the
   Design Systems Team. On the side I work on the <a
-  href="http://sfserviceguide.org">SF Service Guide</a>. Previously, I lead <a
-  href="https://www.thoughtatwork.org">Thought At Work</a> where managed,
-  designed, and developed all sorts of stuff.
+  href="http://sfserviceguide.org">SF Service Guide</a>.
 ---
 
