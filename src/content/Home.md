@@ -1,11 +1,12 @@
 ---
 title: Home
 intro: >-
-  Name's Jacob, and this here's my website. I'm a product designer, and aspiring
-  manager.
+  Hello there, I'm Jacob and this here's my website. I'm a designer at Adobe and
+  a few side-projects.
 subIntro: >-
-  Currently redesigning my portfolio in Next.js and working at Adobe on the
-  Design Systems Team. On the side I work on the <a
-  href="http://sfserviceguide.org">SF Service Guide</a>.
+  I'm currently designing systems and tooling on <a
+  href="http://spectrum.adobe.com/">Spectrum, Adobe's design system</a>. On the
+  side, I'm a designer and manager on <a href="http://sfserviceguide.org">SF
+  Service Guide</a>.
 ---
 
