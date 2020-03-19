@@ -1,11 +1,13 @@
 ---
-URLpath: '/adobe'
-title: 'Adobe 2018 Summer Internship'
+URLpath: /adobe
+title: Adobe Summer Internship
 published: true
 date: '2018-09-09'
-description: 'Worked on the Design Systems team at Adobe, designing and developing internal tools'
-tags: 'Internship / Product Design & Development'
-timePeriod: 'Summer 2017'
+description: >-
+  Worked on the Design Systems team at Adobe, designing and developing internal
+  tools
+tags: Internship / Product Design & Development
+timePeriod: Summer 2017
 ---
 
 ####About
