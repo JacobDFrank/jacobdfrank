@@ -1,0 +1,57 @@
+{
+  "name": "gatsby-jacobdfrank-portfolio",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "dependencies": {
+    "@ibm/type": "^0.5.4",
+    "gatsby": "^2.19.48",
+    "gatsby-image": "^2.0.29",
+    "gatsby-plugin-google-analytics": "^2.0.17",
+    "gatsby-plugin-manifest": "^2.0.17",
+    "gatsby-plugin-netlify": "^2.0.11",
+    "gatsby-plugin-netlify-cms": "^3.0.12",
+    "gatsby-plugin-offline": "^2.0.24",
+    "gatsby-plugin-postcss": "^2.0.5",
+    "gatsby-plugin-react-helmet": "^3.0.6",
+    "gatsby-plugin-sass": "^2.0.10",
+    "gatsby-plugin-sharp": "^2.4.13",
+    "gatsby-plugin-sitemap": "^2.0.5",
+    "gatsby-source-filesystem": "^2.1.57",
+    "gatsby-transformer-remark": "^2.2.4",
+    "gatsby-transformer-sharp": "^2.1.17",
+    "github-markdown-css": "^3.0.1",
+    "netlify-cms": "^2.10.32",
+    "node-sass": "^4.13.1",
+    "normalize-scss": "^7.0.1",
+    "postcss-preset-env": "^6.5.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "react-helmet": "^5.2.0",
+    "react-spring": "^8.0.7",
+    "sass-rem": "^2.0.1"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "format": "prettier --write \"src/**/*.js\"",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+  },
+  "devDependencies": {
+    "prettier": "^1.16.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
+}
