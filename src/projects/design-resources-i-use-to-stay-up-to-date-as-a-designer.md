@@ -2,7 +2,7 @@
 URLpath: /MyDesignResources
 title: Design-Resources I use to stay up to date as a designer
 published: true
-date: 'December 18, 2019'
+date: '2019-12-18'
 description: List of design resources created by me for anyone that might want to see it.
 tags: 'Design, Resources, Tools'
 timePeriod: Updating every few months

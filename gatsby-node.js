@@ -25,7 +25,7 @@ exports.createPages = ({
                 title
                 URLpath
                 published
-                date(formatString: "MMMM DD, YYYY")
+                date
                 description
                 tags
               }

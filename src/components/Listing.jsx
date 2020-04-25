@@ -15,7 +15,7 @@ query ListingQuery {
           frontmatter {
             title
             URLpath
-            date(formatString: "DD MMMM YYYY")
+            date
           }
           excerpt
         }

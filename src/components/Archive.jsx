@@ -17,7 +17,7 @@ const POST_ARCHIVE_QUERY = graphql`
                 title
                 URLpath
                 published
-                date(formatString: "MMMM DD, YYYY")
+                date
                 description
                 tags
               }
