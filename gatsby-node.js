@@ -13,11 +13,7 @@ exports.createPages = ({
   return new Promise((resolve) => {
     graphql(`
       {
-        allMarkdownRemark(filter: {
-            fileAbsolutePath: {
-              regex: "\/projects/"
-            }
-          }) {
+        allMarkdownRemark(filter: {fileAbsolutePath: {regex: "\/projects/"}}) {
           edges {
             node {
               html
