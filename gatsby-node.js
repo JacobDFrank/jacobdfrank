@@ -1,7 +1,6 @@
 // The purpose of this file is to give control and what's being registered in Gatsby
 
 const path = require('path');
-
 //creating pages for only the projects (which are filtered based on the absolute path)
 exports.createPages = ({
   graphql,
@@ -13,17 +12,19 @@ exports.createPages = ({
   return new Promise((resolve) => {
     graphql(`
       {
-        allMarkdownRemark(filter: {fileAbsolutePath: {regex: "\/projects/"}}) {
+        allFile(filter: {sourceInstanceName: {eq: "projects"}}) {
           edges {
             node {
-              html
-              frontmatter {
-                title
-                URLpath
-                published
-                date
-                description
-                tags
+              childMarkdownRemark {
+                html
+                frontmatter {
+                  title
+                  URLpath
+                  published
+                  date
+                  description
+                  tags
+                }
               }
             }
           }
