@@ -12,19 +12,17 @@ exports.createPages = ({
   return new Promise((resolve) => {
     graphql(`
       {
-        allFile(filter: {sourceInstanceName: {eq: "projects"}}) {
+        allMarkdownRemark(filter: {fileAbsolutePath: {regex: "\/projects/"}}) {
           edges {
             node {
-              childMarkdownRemark {
-                html
-                frontmatter {
-                  title
-                  URLpath
-                  published
-                  date
-                  description
-                  tags
-                }
+              html
+              frontmatter {
+                title
+                URLpath
+                published
+                date
+                description
+                tags
               }
             }
           }
