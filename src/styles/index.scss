@@ -14,8 +14,9 @@ canvas {
 
 // Globals, Vars
 @import './global/variables';
-@import './global/typography';
 @import './global/breakpoints';
+@import './global/typography';
+
 
 // Components
 @import './components/home';
