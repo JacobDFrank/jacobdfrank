@@ -5,6 +5,7 @@ import SEO from '../components/Seo';
 import Archive from '../components/Archive';
 // import Listing from '../components/Listing';
 import Intro from '../components/Intro';
+import MoreAboutMe from '../components/MoreAboutMe';
 
 const IndexPage = ({ location }) => (
   <Layout location={location}>
@@ -13,6 +14,7 @@ const IndexPage = ({ location }) => (
     <Intro />
     {/* <Listing /> */}
     <Archive />
+    <MoreAboutMe />
   </Layout>
 );
 
