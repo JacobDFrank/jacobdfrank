@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
 import favicon from '../images/icon.png';
+import socialImage from '../images/SocialImage.png';
 
 function SEO({ description, lang, meta, keywords, title }) {
   return (
@@ -12,7 +13,6 @@ function SEO({ description, lang, meta, keywords, title }) {
       render={data => {
         const metaDescription =
           description || data.site.siteMetadata.description;
-        const socialImage = 'https://jacobdfrank.com/media/social.png';
 
         return (
           <Helmet
