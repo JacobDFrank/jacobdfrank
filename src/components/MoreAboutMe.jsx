@@ -1,8 +1,8 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-const HOMEPAGE_QUERY = graphql`
-query HomePageQuery {
+const MoreAbout_QUERY = graphql`
+query MoreAboutPageQuery {
   allMarkdownRemark(
     filter: { fileAbsolutePath: { regex: "\/content/" } },
   ) {
@@ -10,9 +10,7 @@ query HomePageQuery {
       node {
         id
         frontmatter {
-          title
-          intro
-          about1
+          about2
         }
       }
     }
@@ -23,16 +21,15 @@ query HomePageQuery {
 const Intro = () => (
   <React.Fragment>
     <StaticQuery
-      query={HOMEPAGE_QUERY}
+      query={MoreAbout_QUERY}
       render={({ allMarkdownRemark }) => (
         allMarkdownRemark.edges.map(({ node }) => (
           <section key='title'>
-            <div className="sans-serif about--intro" >{node.frontmatter.intro}
-            </div>
+            <div className="projectListing--title sans-serif">More about me</div>
             <code className="about--text mono"
               dangerouslySetInnerHTML={{
                 __html:
-                  node.frontmatter.about1
+                  node.frontmatter.about2
               }}
             >
             </code>
