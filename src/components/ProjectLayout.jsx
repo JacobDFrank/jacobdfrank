@@ -16,7 +16,7 @@ export default class ProjectLayout extends Component {
       <Layout location={location}>
         <div className="markdown-body">
           <section className="intro">
-            <span className="meta-data code">{markdownRemark.frontmatter.tags} - {markdownRemark.frontmatter.timePeriod}</span>
+            <span className="meta-data code">{markdownRemark.frontmatter.timePeriod}</span>
             <h2><b>{markdownRemark.frontmatter.title}</b> — {markdownRemark.frontmatter.description}</h2>
 
           </section>
@@ -41,7 +41,6 @@ export const query = graphql`
         title
         date
         URLpath
-        tags
         timePeriod
         description
       }

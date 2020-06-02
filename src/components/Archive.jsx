@@ -19,7 +19,6 @@ const POST_ARCHIVE_QUERY = graphql`
                 published
                 date
                 description
-                tags
               }
             }
           }
@@ -34,13 +33,17 @@ const Archive = () => (
       (
         <React.Fragment>
           <section className="projects grid">
+            <div className="projectListing--title sans-serif">Projects</div>
             {
               allMarkdownRemark.edges.map(project => (
-                <div className="project grid__col grid__col--1-of-3" key={project.node.frontmatter.URLpath}>
-                  <span className="meta-data code">{project.node.frontmatter.tags}</span>
-                  <Link to={`/projects${project.node.frontmatter.URLpath}`}>
-                    <span>{project.node.frontmatter.description}</span>
-                  </Link>
+                <div className="grid__col grid__col--1-of-3 grid__col--m-1-of-2" key={project.node.frontmatter.URLpath}>
+                  <div className="project">
+                    <Link to={`/projects${project.node.frontmatter.URLpath}`}>
+                      <div className="projectListing--project-title sans">{project.node.frontmatter.title}</div>
+                      <span className="projectListing--project-text sans-serif">{project.node.frontmatter.description}</span>
+                    </Link>  
+                  </div>
+                  
                 </div>
               ))
             }

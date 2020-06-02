@@ -16,7 +16,8 @@ collections:
         fields:
           - {label: Title, name: title, widget: string}
           - {label: Intro, name: intro, widget: string}
-          - {label: subIntro, name: subIntro, widget: markdown}
+          - {label: about1, name: about1, widget: markdown}
+          - {label: about2, name: about2, widget: markdown}
   - name: 'projects'
     label: 'Projects'
     label_singular: 'Project'

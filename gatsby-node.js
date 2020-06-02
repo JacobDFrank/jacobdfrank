@@ -22,7 +22,6 @@ exports.createPages = ({
                 published
                 date
                 description
-                tags
               }
             }
           }
