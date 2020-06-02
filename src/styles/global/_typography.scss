@@ -3,15 +3,24 @@ $mono: 'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
 
 
 html {
-	font-size: 18px;
+	font-size: 8px;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	@media screen and (max-width: $md) {
+		font-size: 6.5px;
+	}
+}
+
+.mono {
+	font-family: $mono;
+}
+
+.sans-serif {
+	font-family: $sans-serif;
 }
 
 p {
-	font-family: $sans-serif;
-	font-size: .9rem;
 	margin: 0;
 }
 
@@ -51,17 +60,17 @@ h1 {
 	width: 100%;
 	overflow-x: hidden;
 	font-family: $sans-serif;
-	font-size: 20px;
+	font-size: 2.5rem;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
 }
 h2 {
 	margin-top: 0;
-	font-size: 2.828em;
+	font-size: 2.5rem;
 	font-weight: normal;
 	span {
 		font-family: $mono;
-		font-size: 18px;
+		font-size: 2.25rem;
 	}
 	&+p {
 		margin-top: 3em;
@@ -69,7 +78,7 @@ h2 {
 }
 h3 {
 	margin-top: 0;
-	font-size: 2em;
+	font-size: 2rem;
 	font-weight: normal;
 }
 h3.block-quote {
