@@ -1,9 +1,9 @@
 ---
 URLpath: '/TAW'
-title: 'Thought at Work'
+title: 'Thought at Work 2016-2018'
 published: true
 date: '2018-09-02'
-description: 'Lead organizational design, branding, product and development for a design conference'
+description: 'Project managed, lead design, and web development for a 300+ attendee conference.'
 tags: 'Design / Dev / Manager'
 timePeriod: 'Annually, Completed Each Fall'
 ---

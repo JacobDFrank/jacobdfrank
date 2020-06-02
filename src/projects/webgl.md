@@ -1,9 +1,9 @@
 ---
 URLpath: '/WebGL'
-title: 'WebGL Summer'
+title: 'Experiments with WebGL'
 published: true
 date: '2017-12-10'
-description: 'Learned WebGL by stumbling and getting up again and again and again'
+description: 'To learn javascript for the first time I played around with Three.js for a summer.'
 tags: 'WebGL / Personal'
 timePeriod: 'Summer 2016'
 ---

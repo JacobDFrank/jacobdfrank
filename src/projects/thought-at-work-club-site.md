@@ -1,9 +1,9 @@
 ---
 URLpath: /tawOrgSite
-title: Thought At Work Club Site
+title: Thought at Work community
 published: true
 date: 'April 29, 2019'
-description: Website for an interdisciplinary design club.
+description: Managed a team, worked with school faculty and administration to turn an interdisciplinary design conference into a 300+ design club.
 tags: DESIGN / DEV / MANAGEMENT
 timePeriod: 6 Weeks
 ---

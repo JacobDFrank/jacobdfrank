@@ -1,6 +1,6 @@
 ---
 URLpath: /MyDesignResources
-title: Design-Resources I use to stay up to date as a designer
+title: My design resources
 published: true
 date: '2019-12-18'
 description: List of design resources created by me for anyone that might want to see it.

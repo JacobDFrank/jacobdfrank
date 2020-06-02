@@ -1,9 +1,9 @@
 ---
 URLpath: /missle
-title: Emergency Alert System
+title: Emergency system redesign
 published: true
 date: '2018-02-01'
-description: Created a prototype for an alert system following the Hawaii false alarm
+description: Created a prototype for an alert system following the Hawaii false alarm incident.
 tags: School / Design
 timePeriod: 2 Weeks
 ---

@@ -7,7 +7,7 @@ description: >-
   Worked on the Design Systems team at Adobe, designing and developing internal
   tools
 tags: Internship / Product Design & Development
-timePeriod: Summer 2017
+timePeriod: Summer 2017 
 ---
 
 ####About
