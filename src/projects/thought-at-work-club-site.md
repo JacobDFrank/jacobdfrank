@@ -3,7 +3,7 @@ URLpath: /tawOrgSite
 title: Thought at Work community
 published: true
 date: 'April 29, 2019'
-description: Managed a team, worked with school faculty and administration to turn an interdisciplinary design conference into a 300+ design club.
+description: Set up an event framework and website for a 400+ interdisciplinary design conference.
 tags: DESIGN / DEV / MANAGEMENT
 timePeriod: 6 Weeks
 ---
