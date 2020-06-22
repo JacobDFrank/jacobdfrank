@@ -187,22 +187,10 @@ header {
     margin: 2rem 2rem 2rem 0rem;
     padding: 2rem;
     background: $color-background-secondary;
-    height: 180px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    @media screen and (max-width: $lg) {
-        height: calc(8vw + 100px);
-    }
-
-    @media screen and (max-width: $md) {
-        height: calc(10vw + 40px);
-    }
-
-    @media screen and (max-width: $xs) {
-        height: calc(17vw + 80px);
-    }
 
     &:hover {
         transition: ease-in 0.15s;
