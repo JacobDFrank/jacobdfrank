@@ -8,7 +8,7 @@ description: >-
 timePeriod: November 2019 - Present
 ---
 
-## The documentation for the project can be found <a href="https://spectrum.adobe.com/page/spectrum-xd-plugin/">on Spectrum's website</a>.
+## More information about the project can be found <a href="https://spectrum.adobe.com/page/spectrum-xd-plugin/">on Spectrum's website</a>.
 
 ![Plugin](/img/Spectrum-xd-plugin_hero-article-167@2x.png "Plugin screenshot")
 
