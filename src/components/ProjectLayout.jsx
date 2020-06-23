@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Layout from './Layout';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 // Static query can be used anywhere. Doesn't accept variables, can't use context.
 
@@ -14,15 +14,23 @@ export default class ProjectLayout extends Component {
     const { location } = this.props;
     return (
       <Layout location={location}>
-        <div className="markdown-body">
-          <section className="intro">
-            <span className="meta-data code">{markdownRemark.frontmatter.timePeriod}</span>
-            <h2><b>{markdownRemark.frontmatter.title}</b> — {markdownRemark.frontmatter.description}</h2>
+        <div className="casestudy-container">
+          <div className="markdown-body">
+            <div>
+              <p className="text-projects">
+                <Link to="/#projects">Past projects:</Link>
+              </p>
+              <h1>{markdownRemark.frontmatter.title}</h1>
+              <p>{markdownRemark.frontmatter.description}</p>
 
-          </section>
-          <section className="content" dangerouslySetInnerHTML={{
-            __html: markdownRemark.html
-          }} />
+            </div>
+            <div className="content" dangerouslySetInnerHTML={{
+              __html: markdownRemark.html
+            }} />
+          </div>
+          <p className="text-projects">
+            <Link to="/#projects">Go to other projects</Link>
+          </p>
         </div>
       </Layout>
     );

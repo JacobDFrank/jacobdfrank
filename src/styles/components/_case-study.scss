@@ -142,10 +142,6 @@
     text-decoration: none;
 }
 
-.markdown-body a:hover {
-    text-decoration: underline;
-}
-
 .markdown-body strong {
     font-weight: 600;
 }
@@ -768,4 +764,128 @@
 
 .markdown-body .pl-12 {
     padding-left: 128px !important;
+}
+
+
+.metaData {
+    
+    &+h2 {
+        margin-top: 0.5em;
+    }
+}
+
+.detail {
+    opacity: 0.75;
+    font-weight: 700;
+}
+
+.casestudy-container {
+    // margin-left: 10vw;
+    font-size: 3rem;
+    max-width: 830px;
+
+    padding: 3rem 5rem 3rem 10rem;
+
+    
+
+    @media screen and (max-width: 768px) {
+        padding: 3em 2em;
+    }
+    @media screen and (max-width: 400px) {
+        padding: 2em 1em;
+    }
+}
+
+.markdown-body {
+    h1 {
+        font-family: $sans-serif;
+        font-style: normal;
+        font-weight: normal;
+
+        
+
+        @media screen and (min-width: $xs) {
+            font-size: 36px;
+            line-height: 47px;
+            margin-bottom: 20px;
+        }
+
+        @media screen and (max-width: $xs) {
+            font-size: 28px;
+            line-height: 36px;
+            margin-bottom: 18px;
+        }
+    }
+
+    p {
+        line-height: 180%;
+        font-family: $mono;
+        font-style: normal;
+        
+        @media screen and (min-width: $xs) {
+            font-size: 18px;
+            margin-bottom: 48px;
+        }
+
+        @media screen and (max-width: $xs) {
+            font-size: 14px;
+            margin-bottom: 36px;       
+        }
+    }
+
+    h2 {
+        font-family: $sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        line-height: 160%;
+
+
+        
+        @media screen and (min-width: $xs) {
+            font-size: 28px;
+            margin-bottom: 48px; 
+        }
+
+        @media screen and (max-width: $xs) {
+            font-size: 22px;
+            margin-bottom: 36px; 
+        }
+    }
+
+    img {
+
+        @media screen and (min-width: $xs) {
+            margin-bottom: 48px;
+            max-width: 420px;
+            width: 70vw;
+        }
+
+        @media screen and (max-width: $xs) {
+            margin-bottom: 36px;
+            max-width: 294px;
+            width: 80vw;
+        }
+        @media screen and (min-width: $md) {
+            margin-bottom: 48px;
+            max-width: 840px;
+        }
+    }
+    .text-projects {
+        font-family: $sans-serif;
+        font-style: normal;
+        font-weight: unset;
+        // background-color: $color-background-secondary;
+        // width: fit-content;
+        text-transform: uppercase;
+        
+        @media screen and (min-width: $xs) {
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        @media screen and (max-width: $xs) {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+    }
 }

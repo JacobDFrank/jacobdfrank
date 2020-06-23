@@ -2,31 +2,33 @@
 URLpath: /tawOrgSite
 title: Thought at Work community
 published: true
-date: 'April 29, 2019'
+date: '2019-04-29'
 description: Set up an event framework and website for a 400+ interdisciplinary design conference.
 tags: DESIGN / DEV / MANAGEMENT
-timePeriod: 6 Weeks
+timePeriod: March-April 2019
 ---
-
-## Problem
-
-#### Creating a website for an interdisciplinary design club.
-
-I have been working on a design conference called Thought At Work for the past four years, leading the website and eventually the whole conference. While leading it, I realized the conference could fulfill a larger purpose and help foster the design community at RIT immensely. The club will host smaller events in addition to the conference based on what worked best at the conference and the community's needs.
-
-**A website that supports and disseminates information about this design organization and the events they host.**
 
 ![Upcoming Events Page](/img/upcoming-events-page.png "Upcoming Events Page")
 
-## Visual design
+## Creating a website for an interdisciplinary design club, and bringing niche sects of designers together
 
-#### Adjusting a weak brand
+I worked on a design conference called Thought At Work for four years, starting in 2015 when college began. At first I was leading the website and eventually the whole conference. While leading it, I realized the conference could fulfill a larger purpose and help foster the design community at RIT immensely. The club will host smaller events in addition to the conference based on what worked best at the conference and the community's needs.
+
+**A website that supports and disseminates information about this design organization and the events they host.**
+
+## Visual design: adjusting a weak brand
 
 Since the site would represent the organization, it was best to stick to a brand people attending knew so I took the visual style used at the previous year's conference.
 
 The previous year's style was fun, friendly, and straightforward using basic primary colors and 2.5d shapes. To improve on this, I removed some rules and added a few:
 
 A flat, rounded drop shadow on clickable elements.
+
+![Speaker Page Template](/img/sm-1.9.png "Speaker Page Template")
+
+
+A new design system:
+
 
 #### Changes
 
@@ -39,15 +41,16 @@ A flat, rounded drop shadow on clickable elements.
 * This decision made sense to us because it would keep the style friendlier but with so few being able to tell the difference between it and black I opted to replace it.
 
 * Swapping isometric shapes with 2d shapes and replaced the background
-  * We'd thought requiring isometric shapes in the past would give the brand a more identifiable look, but it ended up making it more restrictive. With a flat shape filled approach, we could do more and replace the dot-grid background.
 
-![Speaker Page Template](/img/sm-1.9.png "Speaker Page Template")
-### Design System
+* We'd thought requiring isometric shapes in the past would give the brand a more identifiable look, but it ended up making it more restrictive. With a flat shape filled approach, we could do more and replace the dot-grid background.
 
+<br>
 
-#### On a small team, Design Systems are helpful for the future but get in the way in the present.
+Speaker page iterations:
 
-* A modern design system used while working on the website, this would help the team when designing new pages in the future.
+![Iterations](/img/designwork.png "Iterations for the speaker page")
+
+On a small team, Design Systems are helpful for the future but get in the way in the present.
 
 #### Negatives
 
@@ -64,6 +67,7 @@ A flat, rounded drop shadow on clickable elements.
 * After going through the various design steps in creating an information architecture, sketching, wire-framing, and crafting visual comps we crafted a successful set of functional and clean pages ready to support the organization.
 
 ![About Page](/img/about-page.png "About Page")
+
 
 ##### Designed for a Content Management System
 
@@ -89,5 +93,3 @@ I could probably and likely will write a whole article about my experiences as a
     * Videoing each other also increases how personal the meetings will be. When everyone can communicate on the same level, they'll be open to speaking up more.
 
 ![Contentful CMS for TAW Site](/img/contentful.png "Contentful CMS for TAW Site")
-
-#### Thanks for reading!

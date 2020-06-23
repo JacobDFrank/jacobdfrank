@@ -1,7 +1,7 @@
 ---
 URLpath: /adobe
 title: Adobe Summer Internship
-published: true
+published: false
 date: '2018-09-09'
 description: >-
   Worked on the Design Systems team at Adobe, designing and developing internal

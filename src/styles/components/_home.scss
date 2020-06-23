@@ -53,18 +53,6 @@ a {
     }
 }
 
-.code {
-    color: $color-primary;
-    opacity: 0.75;
-    font-weight: 700;
-}
-
-.meta-data {
-    &+h2 {
-        margin-top: 0.5em;
-    }
-}
-
 .about {
     &--text {
         color: $color-primary;
@@ -197,7 +185,7 @@ header {
     }
 
     @media screen and (max-width: $md) {
-        height: calc(10vw + 40px);
+        height: calc(10vw + 50px);
     }
 
     @media screen and (max-width: $xs) {
@@ -310,7 +298,7 @@ section.content {
     }
     &--container {
         
-        padding: 4rem 10rem;
+        padding: 16rem 10rem 4rem 10rem;
 
         @media screen and (max-width: 768px) {
             padding: 6rem 5rem;

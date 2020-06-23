@@ -33,7 +33,9 @@ const Archive = () => (
       (
         <React.Fragment>
           <section className="projects grid">
-            <div className="projectListing--title sans-serif">Projects</div>
+            <div
+              id={'projects'}
+              className="projectListing--title sans-serif">Past projects</div>
             {
               allMarkdownRemark.edges.map(project => (
                 <div className="grid__col grid__col--1-of-3 grid__col--m-1-of-2" key={project.node.frontmatter.URLpath}>
