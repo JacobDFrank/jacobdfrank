@@ -8,11 +8,9 @@ description: >-
 timePeriod: November 2019 - Present
 ---
 
-## More information about the project can be found <a href="https://spectrum.adobe.com/page/spectrum-xd-plugin/">on Spectrum's website</a>.
+## I co-wrote an article on the release of the plugin <a href="https://medium.com/@JacobDFrank/spectrum-for-adobe-xd-adobes-design-language-in-its-experience-design-tool-bf8db1e676f2">on Medium</a>.
 
 ![Plugin](/img/Spectrum-xd-plugin_hero-article-167@2x.png "Plugin screenshot")
-
-I co-wrote an article on the release of this that will be out soon.
 
 This project is still in beta but we released it to the public for feedback and to provide inspiration for future design systems tools.
 
