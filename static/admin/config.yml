@@ -29,7 +29,7 @@ collections:
       - { label: 'Project Title', name: 'title', widget: 'string' }
       - { label: 'Publish project?', name: 'published', widget: 'boolean', required: false}
       - { label: 'Publish Date', hint: 'Projects will be listed in descending order based on date', name: 'date', widget: 'date', default: '2019-01-01', format: 'MMMM DD, YYYY'}
-      - { label: 'Project Description', name: 'description', widget: 'string', pattern: ['^.{1,85}$', 'Must have no more than 85 characters']}
+      - { label: 'Project Description', name: 'description', widget: 'string', pattern: ['^.{1,166}$', 'Must have no more than 166 characters']}
       - { label: 'Project Tags', name: 'tags', widget: 'string', pattern: ['^.{1,44}$', 'Must have no more than 44 characters']}
       - { label: 'Time Period', hint: 'Ex: Summer 2017 or Annually, Completed Each Fall', name: 'timePeriod', widget: 'string', pattern: ['^.{1,32}$', 'Must have no more than 32 characters']}
       - { label: 'Project Case Study', hint: 'Write about it, you can do it in markdown', name: 'body', widget: 'markdown'}
