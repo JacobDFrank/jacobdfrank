@@ -1,17 +1,17 @@
 ---
-URLpath: '/TAW'
-title: 'Thought at Work 2016-2018'
+URLpath: /TAW
+title: Thought at Work 2016-2018
 published: true
 date: '2018-09-02'
 description: 'Project managed, lead design, web development for a 300+ attendee conference.'
-tags: 'Design / Dev / Manager'
+tags: Design / Dev / Manager
 timePeriod: 'Annually, Completed Each Fall'
 ---
 
 ###Note
 **Currently out of date, update soon to come**
 <br/>
-Check out <a href="http://www.thoughtatwork.org">thoughtatwork.org</a> for more details
+The 2018 site is the most recent one and since I've graduated, it is now only available at <a href="https://taw2018.netlify.app/Home">taw2018.netlify.app</a> for more details
 
 
 ####The Project
@@ -20,7 +20,7 @@ Creation of a design conference website. Tasked with forming a team and building
 
 <br/>
 
-<a href="http://thoughtatwork.cias.rit.edu/">Visit the Site</a>
+<a href="https://taw2018.netlify.app/Home">Visit the Site</a>
 
 
 ![homepage of TAW site](https://www.jacobdfrank.com/images/taw/home.png)

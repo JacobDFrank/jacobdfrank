@@ -1,9 +1,11 @@
 ---
 URLpath: /tawOrgSite
-title: Thought at Work community
+title: Creation of a college design organization
 published: true
 date: '2019-04-29'
-description: Set up an event framework and website for a 400+ interdisciplinary design conference.
+description: >-
+  Set up an event framework and website for a 400+ interdisciplinary design
+  conference.
 tags: DESIGN / DEV / MANAGEMENT
 timePeriod: March-April 2019
 ---

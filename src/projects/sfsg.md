@@ -4,7 +4,10 @@ title: SF Service Guide
 published: true
 date: '2020-04-23'
 description: >-
-  Design manager at non-profit focused on greater access to services for those experiencing and at risk for homelessness. Lead design system and launched multiple features.
+  Design manager and lead at a 501(c)(3) focused on greater access to services
+  for those at risk of homelessness. Created design system and lead multiple
+  features.
+tags: 'Design management, product, UI design'
 timePeriod: August 2019 - Present
 ---
 
