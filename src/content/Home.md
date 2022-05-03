@@ -3,8 +3,7 @@ title: Home
 intro: My name’s Jacob and this is my website
 about1: >-
   I'm a San Francisco based designer, technologist, and civic tech strategist
-  who takes bike rides ~~down hills and walks up big ones~~ until recently when
-  I tore my hamstring.
+  who takes bike rides down hills and walks up big ones.
 
   <br><br>
 
