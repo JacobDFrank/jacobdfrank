@@ -57,8 +57,8 @@ module.exports = {
         name: 'JacobDFrank portfolio site',
         short_name: 'Jacob Frank',
         start_url: '/',
-        background_color: '#C61A3B',
-        theme_color: '#C61A3B',
+        background_color: '#095aba', // Color background
+        theme_color: '#095aba', // Color background
         display: 'minimal-ui',
         icon: 'src/images/icon.png', // This path is relative to the root of the site.
       },
