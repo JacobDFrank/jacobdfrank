@@ -2,7 +2,7 @@
 URLpath: /MyDesignResources
 title: My design resources
 published: true
-date: 2019-12-18
+date: 2019-12-18T00:00:00.000Z
 description: List of design resources created by me for anyone that might want to see it.
 tags: Design, Resources, Tools
 timePeriod: Updating every few months
@@ -45,13 +45,8 @@ timePeriod: Updating every few months
 ### Email Newsletters
 
 * [Webdesigner News](https://www.webdesignernews.com/)
-* [Kevin Rose email](https://www.kevinrose.com/)
-* [Subtraction](https://www.subtraction.com/2007/09/13/from-me-to-y/)
-* [OffScreen Dispatch](https://www.offscreenmag.com/dispatch)
 * [Your Majesty Co. '10 Things'](http://10things.yourmajesty.co)
-* Invision (Meh)
 * [UI Movement](https://letterfuel.com/ui-movement/issues/top-5-ui-animations-this-week-8/)
-* [MG Siegler](http://newsletter.mgsiegler.com/)
 * If there's an agency or company you like look into their socials too
 * [Neilson Norman](http://www.nngroup.com/articles/subscribe/)
 * [Visual Soldiers' Armory](https://armory.visualsoldiers.com/)For new tools that could be integral to your process.
@@ -62,16 +57,15 @@ timePeriod: Updating every few months
 
 * [UX Design thinking for kids](https://praxent.com/blog/ux-design-thinking-for-kids-guide)
 * The Verge
-* NYC Opportunity
 * Code For America
 * CSSDesignAwards
 * Muzli
+*﻿ [Kids' Computer Essentials: Graphic Design](https://www.uscareerinstitute.edu/blog/kids-computer-essentials-graphic-design)
 * Just read design stuff on medium and it'll recommend you things. You can look at [my follower's too](https://medium.com/@JacobDFrank/following). To name a few..
 
   * https://medium.freecodecamp.org/
   * https://uxdesign.cc/
-  * https://uxplanet.org/
-* Julie Zhuo Blog (Product Design VP @ Facebook)
+  * https://uxplanet.org/e
 
 ### Events
 
@@ -98,5 +92,5 @@ timePeriod: Updating every few months
 * [Pixelmator Pro](https://www.pixelmator.com/), a better alternative to photoshop when you don't want to spend hours learning to do something simple. 
 * [Sip](https://sipapp.io/), the best color picker ever
 * [Contrast](https://usecontrast.com/), the best contrast checker out there
-* Figma, Xd, Sketch. I prefer Figma for meetings and plugin support. Sketch has great plugins too and an amazing community. Xd works well with all your adobe tools.
+* Figma
 * [Metatags.io](https://metatags.io/), an easy and pretty metatag checker and preview site.
