@@ -6,11 +6,7 @@ const POST_ARCHIVE_QUERY = graphql`
         allMarkdownRemark(
           limit: 6,
           filter: { fileAbsolutePath: {regex : "\/projects/"}, frontmatter: { published: { ne: false } } },
-          sort: {
-            order: DESC,
-            fields: [frontmatter___date],
-            
-        }) {
+          sort: { frontmatter: { date: DESC } }) {
           edges {
             node {
               frontmatter {

@@ -6,7 +6,7 @@ query ListingQuery {
    allMarkdownRemark(
     	limit: 1,
       filter: { fileAbsolutePath: {regex : "\/projects/"} },
-      sort: {fields: [frontmatter___date], order: DESC},
+      sort: { frontmatter: { date: DESC } },
     ) {
       totalCount
       edges {

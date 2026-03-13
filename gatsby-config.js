@@ -7,18 +7,16 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-sitemap',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-postcss',
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-sass',
     {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: 'gatsby-plugin-sass',
       options: {
-        trackingId: 'UA-96615084-1',
-        // Setting this parameter is optional
-        anonymize: false
-      }
+        sassOptions: {
+          silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin', 'slash-div', 'if-function'],
+        },
+      },
     },
     {
       resolve: 'gatsby-plugin-postcss',
@@ -51,20 +49,18 @@ module.exports = {
     },
     'gatsby-transformer-remark',
     {
-      resolve: 'gatsby-plugin-manifest', // customize this so that when the site is saved in a bookmark, etc that the icon, color, and information can be stored on someone's device correctly
-      // https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'JacobDFrank portfolio site',
         short_name: 'Jacob Frank',
         start_url: '/',
-        background_color: '#095aba', // Color background
-        theme_color: '#095aba', // Color background
+        background_color: '#095aba',
+        theme_color: '#095aba',
         display: 'minimal-ui',
-        icon: 'src/images/icon.png', // This path is relative to the root of the site.
+        icon: 'src/images/icon.png',
       },
     },
-    'gatsby-plugin-netlify-cms',
+    'gatsby-plugin-decap-cms',
     'gatsby-plugin-netlify',
-    'gatsby-plugin-offline',
   ],
 };
