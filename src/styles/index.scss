@@ -2,6 +2,10 @@ canvas {
 	pointer-events: none;
 }
 
+*, *::before, *::after {
+	cursor: url('/pizza-cursor.png') 24 24, auto;
+}
+
 // Vendor
 @import '../../node_modules/normalize.css/normalize.css';
 @import '../../node_modules/sass-rem/rem';
