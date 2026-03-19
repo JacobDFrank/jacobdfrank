@@ -185,13 +185,14 @@ header {
         .grid__col {
             display: flex;
             width: auto !important;
+            min-width: 0;
         }
 
         @media screen and (max-width: $md) {
             grid-template-columns: repeat(2, 1fr);
         }
 
-        @media screen and (max-width: $xs) {
+        @media screen and (max-width: $sm) {
             grid-template-columns: 1fr;
         }
     }
@@ -199,6 +200,7 @@ header {
 
 .project {
     flex: 1;
+    min-width: 0;
     margin: 0.5rem;
     padding: 2rem;
     background: $color-background-secondary;
