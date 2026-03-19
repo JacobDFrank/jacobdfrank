@@ -100,8 +100,10 @@ a {
 }
 
 section {
-    padding: 3em 5em;
-    max-width: 1080px;
+    max-width: 780px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 5rem 2rem;
 }
 
 header {
@@ -123,7 +125,7 @@ header {
 }
 
 .intro {
-    padding: 3em 5em;
+    padding: 5rem 2rem;
 
     h1 {
         font-weight: bold;
@@ -300,14 +302,16 @@ section.content {
         width: fit-content;
     }
     &--container {
-        
-        padding: 16rem 10rem 4rem 10rem;
+        max-width: 780px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 10rem 2rem 4rem;
 
         @media screen and (max-width: 768px) {
-            padding: 6rem 5rem;
+            padding: 6rem 1.5rem 4rem;
         }
         @media screen and (max-width: 400px) {
-            padding: 4rem 2rem;
+            padding: 4rem 1rem 3rem;
             -webkit-box-orient: vertical;
             -webkit-box-direction: normal;
             -ms-flex-direction: column;
@@ -335,7 +339,7 @@ section.content {
 
 @media screen and (min-width: 768px) {
     p {
-        width: 65%;
+        width: 100%;
         word-wrap: normal;
     }
 }
@@ -352,15 +356,15 @@ section.content {
     }
 
     section {
-        padding: 3em 2em;
+        padding: 3rem 1.5rem;
     }
 
     header {
-        padding: 3em 2em;
+        padding: 3rem 1.5rem;
     }
 
     .intro {
-        padding: 3em 2em;
+        padding: 3rem 1.5rem;
     }
 
     .grid-list {
@@ -408,19 +412,19 @@ section.content {
     }
 
     section {
-        padding: 2em 1em;
+        padding: 2rem 1rem;
     }
 
     header {
-        padding: 2em 1em;
+        padding: 2rem 1rem;
     }
 
     .intro {
-        padding: 2em 1em;
+        padding: 2rem 1rem;
     }
 
     .projects {
-        padding: 2em 1em;
+        padding: 2rem 1rem;
     }
 
     .modal {
