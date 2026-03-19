@@ -125,8 +125,6 @@ header {
 }
 
 .intro {
-    padding: 5rem 2rem;
-
     h1 {
         font-weight: bold;
     }
@@ -374,23 +372,11 @@ section.content {
         padding: 3rem 1.5rem;
     }
 
-    .intro {
-        padding: 3rem 1.5rem;
-    }
-
     .grid-list {
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
         flex-direction: column;
-    }
-
-    .projects {
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        padding: 3em 2em;
     }
 
     .project {
@@ -427,14 +413,6 @@ section.content {
     }
 
     header {
-        padding: 2rem 1rem;
-    }
-
-    .intro {
-        padding: 2rem 1rem;
-    }
-
-    .projects {
         padding: 2rem 1rem;
     }
 
