@@ -174,28 +174,39 @@ header {
     a {
         border-bottom: none !important;
     }
+
+    &.grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: stretch;
+
+        .projectListing--title {
+            grid-column: 1 / -1;
+        }
+
+        .grid__col {
+            display: flex;
+            width: auto !important;
+        }
+
+        @media screen and (max-width: $md) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media screen and (max-width: $xs) {
+            grid-template-columns: 1fr;
+        }
+    }
 }
 
 .project {
-    margin: 2rem 2rem 2rem 0rem;
+    flex: 1;
+    margin: 0.5rem;
     padding: 2rem;
     background: $color-background-secondary;
-    height: 180px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    @media screen and (max-width: $lg) {
-        height: calc(8vw + 100px);
-    }
-
-    @media screen and (max-width: $md) {
-        height: calc(10vw + 50px);
-    }
-
-    @media screen and (max-width: $xs) {
-        height: calc(17vw + 80px);
-    }
 
     &:hover {
         transition: ease-in 0.15s;
