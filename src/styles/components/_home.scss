@@ -318,11 +318,11 @@ section.content {
         margin: 0 auto;
         padding: 10rem 2rem 4rem;
 
-        @media screen and (max-width: 768px) {
-            padding: 6rem 1.5rem 4rem;
+        @media screen and (max-width: $small-width) {
+            padding: 6rem $side-padding-small 4rem;
         }
         @media screen and (max-width: 400px) {
-            padding: 4rem 1rem 3rem;
+            padding: 4rem $side-padding-small 3rem;
             -webkit-box-orient: vertical;
             -webkit-box-direction: normal;
             -ms-flex-direction: column;
@@ -361,17 +361,17 @@ section.content {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: $small-width) {
     p {
         width: 100%;
     }
 
     section {
-        padding: 3rem 1.5rem;
+        padding: 3rem $side-padding-small;
     }
 
     header {
-        padding: 3rem 1.5rem;
+        padding: 3rem $side-padding-small;
     }
 
     .grid-list {
@@ -411,11 +411,11 @@ section.content {
     }
 
     section {
-        padding: 2rem 1rem;
+        padding: 2rem $side-padding-small;
     }
 
     header {
-        padding: 2rem 1rem;
+        padding: 2rem $side-padding-small;
     }
 
     .modal {

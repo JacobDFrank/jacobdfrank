@@ -786,11 +786,11 @@
     margin: 0 auto;
     padding: 5rem 2rem;
 
-    @media screen and (max-width: 768px) {
-        padding: 3rem 1.5rem;
+    @media screen and (max-width: $small-width) {
+        padding: 3rem $side-padding-small;
     }
     @media screen and (max-width: 400px) {
-        padding: 2rem 1rem;
+        padding: 2rem $side-padding-small;
     }
 }
 
