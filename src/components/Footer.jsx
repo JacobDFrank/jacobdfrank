@@ -11,7 +11,7 @@ class Footer extends React.Component {
             <a className="footer--link" target="_blank" href="https://www.jacobdfrank.com/media/Jacob_Frank_Resume.pdf">Resume</a>
             <a className="footer--link" target="_blank" href="https://github.com/JacobDFrank">Github</a>
             <a className="footer--link" target="_blank" href="https://www.linkedin.com/in/jacobdfrank">LinkedIn</a>
-            <a className="footer--link" target="_blank" href="https://twitter.com/jacobdfrank">Twitter</a>
+            <a className="footer--link" target="_blank" href="https://bsky.app/profile/jacobfrank.bsky.social">Bluesky</a>
           </div>
         </footer>
       </React.Fragment>
