@@ -1,13 +1,13 @@
 ---
 title: Home
-intro: My name’s Jacob and this is my website
+intro: Jacob Frank
 about1: >-
   I'm a Brooklyn based designer, prototyper, and civic tech strategist who takes
   bike rides down hills and walks up big ones.
 
   <br><br>
 
-  Currently, I'm a senior designer at Adobe working assets and collaboration.
+  Currently, I'm a senior designer at Adobe working on assets and collaboration.
 
 
   Previously I worked on <a href="http://spectrum.adobe.com/">Adobe's design system, Spectrum</a> and on the side, <a href="http://sfserviceguide.org">SF Service Guide</a> where I lead a team of volunteer designers.
@@ -19,5 +19,5 @@ about2: >-
   design conference</a> with some inspiring faculty and students. I keep a list
   of design resources for anyone interested in getting into the field
 
-  I spend the rest of my time cooking, getting lost on Wikipedia, climbing and gallery hopping.
+  I spend the rest of my time cooking, eating too much fruit, climbing and gallery hopping.
 ---

@@ -9,7 +9,7 @@ class Footer extends React.Component {
           <div className="footer--links">
             <a className="footer--link" target="_blank" href="mailto:frankjacob42@gmail.com?Subject=Hey%27s%20There" className="footer--link" target="_top">Email</a>
             <a className="footer--link" target="_blank" href="https://www.jacobdfrank.com/media/Jacob_Frank_Resume.pdf">Resume</a>
-            <a className="footer--link" target="_blank" href="https://github.com/JacobDFrank">Github</a>
+            {/* <a className="footer--link" target="_blank" href="https://github.com/JacobDFrank">Github</a> */}
             <a className="footer--link" target="_blank" href="https://www.linkedin.com/in/jacobdfrank">LinkedIn</a>
             <a className="footer--link" target="_blank" href="https://bsky.app/profile/jacobfrank.bsky.social">Bluesky</a>
           </div>

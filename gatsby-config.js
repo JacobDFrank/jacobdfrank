@@ -1,3 +1,5 @@
+const gaMeasurementId = process.env.GATSBY_GA_MEASUREMENT_ID;
+
 module.exports = {
   siteMetadata: {
     title: 'Jacob D Frank',
@@ -61,6 +63,23 @@ module.exports = {
       },
     },
     'gatsby-plugin-decap-cms',
+    ...(gaMeasurementId
+      ? [
+          {
+            resolve: 'gatsby-plugin-google-gtag',
+            options: {
+              trackingIds: [gaMeasurementId],
+              gtagConfig: {
+                anonymize_ip: true,
+              },
+              pluginConfig: {
+                head: true,
+                respectDNT: true,
+              },
+            },
+          },
+        ]
+      : []),
     'gatsby-plugin-netlify',
   ],
 };

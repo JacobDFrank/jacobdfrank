@@ -1,8 +1,8 @@
 @use "sass:color";
 
 /* Color Variables */
-$color-primary: #fee6a4;
-$color-primary-bg: #fee6a4;
-$color-background: #095aba;
+$color-primary: #d89f01;
+$color-primary-bg: $color-primary;
+$color-background: #0929ba;
 $color-background-secondary: color.adjust($color-background, $lightness: -20%);
 $color-hover: color.adjust($color-background, $lightness: 10%);
