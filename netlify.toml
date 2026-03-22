@@ -4,3 +4,6 @@
   
 [build.environment]
   NODE_VERSION = "22"
+  # GA4 IDs are public, but Gatsby inlines GATSBY_* into static JS; the Netlify secrets
+  # scan otherwise fails the build when this env var is set in Site settings.
+  SECRETS_SCAN_OMIT_KEYS = "GATSBY_GA_MEASUREMENT_ID"
