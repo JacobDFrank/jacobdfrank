@@ -27,6 +27,51 @@ body {
     color: $color-primary;
 }
 
+/* Blur + fade-in, top → bottom (all pages via Layout). Sync stagger with Layout.jsx PAGE_ENTRANCE_STAGGER_S. */
+@keyframes page-entrance-blur {
+    from {
+        opacity: 0;
+        filter: blur(14px);
+        transform: translate3d(0, 0.3em, 0);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+$page-entrance-ease: cubic-bezier(0.16, 1, 0.3, 1);
+$page-entrance-duration: 1.52s;
+$page-entrance-stagger: 0.28s;
+
+main.page-entrance > * {
+    animation: page-entrance-blur $page-entrance-duration $page-entrance-ease both;
+
+    @for $i from 1 through 24 {
+        &:nth-child(#{$i}) {
+            animation-delay: calc((#{$i} - 1) * #{$page-entrance-stagger});
+        }
+    }
+}
+
+.page-entrance-footer-wrap {
+    animation: page-entrance-blur $page-entrance-duration $page-entrance-ease both;
+    animation-delay: var(--page-entrance-footer-delay, calc(3 * #{$page-entrance-stagger}));
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    main.page-entrance > *,
+    .page-entrance-footer-wrap {
+        animation: none;
+        opacity: 1;
+        filter: none;
+        transform: none;
+    }
+}
+
 a {
     text-decoration: none;
     background-repeat: no-repeat;

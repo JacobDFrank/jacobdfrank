@@ -5,8 +5,8 @@ import Archive from '../components/Archive';
 import Intro from '../components/Intro';
 import MoreAboutMe from '../components/MoreAboutMe';
 
-const IndexPage = ({ location }) => (
-  <Layout location={location}>
+const IndexPage = () => (
+  <Layout>
     <Intro />
     <Archive />
     <MoreAboutMe />

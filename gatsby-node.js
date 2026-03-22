@@ -1,5 +1,17 @@
 const path = require('path');
 
+/** Home content (`src/content/*.md`) uses these fields; project markdown does not, so they must be declared or inference omits them. */
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  createTypes(`
+    extend type MarkdownRemarkFrontmatter {
+      intro: String
+      about1: String
+      about2: String
+    }
+  `);
+};
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 

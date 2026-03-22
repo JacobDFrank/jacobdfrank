@@ -29,11 +29,6 @@ code {
 	font-family: $mono;
 }
 
-a {
-	text-decoration: none;
-	color: inherit;
-}
-
 @function vw($target) {
 	$vw-context: (1000*.01) * 1px;
 	@return ($target/$vw-context) * 1vw;
@@ -102,6 +97,7 @@ h3.block-quote {
 }
 a {
 	text-decoration: none;
+	color: inherit;
 	line-height: 1.55em;
 }
 p {
