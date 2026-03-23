@@ -17,7 +17,7 @@ about2: >-
   of Individualized Studies</a> where I spent most of my time managing and
   working on a <a href="https://www.jacobdfrank.com/projects/tawOrgSite">yearly
   design conference</a> with some inspiring faculty and students. I keep a list
-  of design resources for anyone interested in getting into the field
+  of <a href="/projects/MyDesignResources">design resources</a> for anyone interested in getting into the field
 
   I spend the rest of my time cooking, eating too much fruit, climbing and gallery hopping.
 ---

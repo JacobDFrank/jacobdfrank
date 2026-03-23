@@ -2,6 +2,25 @@ import React, { useEffect, useRef, useState } from 'react';
 import orangeImg from '../images/orange.png';
 import { buildRandomJuiceBurstShadows } from '../utils/juiceBurstShadows';
 
+/** True if el is a link, button, or other primary click target (including Gatsby `<Link>` → `<a>`). */
+function isInteractiveTarget(el) {
+  if (!el || el.nodeType !== Node.ELEMENT_NODE) return false;
+  let node = el;
+  while (node && node !== document.body) {
+    const tag = node.tagName;
+    if (tag === 'A' && node.getAttribute('href')) return true;
+    if (tag === 'BUTTON') return true;
+    if (tag === 'INPUT' && node.type !== 'hidden') return true;
+    if (tag === 'SELECT' || tag === 'TEXTAREA') return true;
+    if (tag === 'LABEL') return true;
+    const role = node.getAttribute('role');
+    if (role === 'button' || role === 'link' || role === 'menuitem' || role === 'tab') return true;
+    if (node.getAttribute('contenteditable') === 'true') return true;
+    node = node.parentElement;
+  }
+  return false;
+}
+
 /**
  * Custom orange cursor with randomized juice droplet burst on each click.
  * Orange stays scaled down while primary button is held.
@@ -9,6 +28,7 @@ import { buildRandomJuiceBurstShadows } from '../utils/juiceBurstShadows';
 const OrangeJuiceCursor = () => {
   const [active, setActive] = useState(false);
   const [pos, setPos] = useState({ x: -100, y: -100 });
+  const [overInteractive, setOverInteractive] = useState(false);
   const [pressed, setPressed] = useState(false);
   const [burst, setBurst] = useState(false);
   const [burstKey, setBurstKey] = useState(0);
@@ -26,6 +46,9 @@ const OrangeJuiceCursor = () => {
 
     const onMove = (e) => {
       setPos({ x: e.clientX, y: e.clientY });
+      const under = document.elementFromPoint(e.clientX, e.clientY);
+      const next = isInteractiveTarget(under);
+      setOverInteractive((prev) => (prev === next ? prev : next));
     };
 
     const onDown = (e) => {
@@ -64,7 +87,13 @@ const OrangeJuiceCursor = () => {
 
   if (!active) return null;
 
-  const cls = ['juice-cursor', pressed && 'juice-cursor--pressed'].filter(Boolean).join(' ');
+  const cls = [
+    'juice-cursor',
+    overInteractive && 'juice-cursor--interactive',
+    pressed && 'juice-cursor--pressed',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
     <div

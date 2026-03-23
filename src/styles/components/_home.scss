@@ -247,11 +247,13 @@ header {
     flex: 1;
     min-width: 0;
     margin: 0.5rem;
-    padding: 2rem;
+    // Padding lives on the inner <Link>/<a> so the full colored tile (including insets) is the
+    // link’s hit target — otherwise elementFromPoint hits .project in the padded area and the
+    // custom cursor never sees an interactive element.
+    padding: 0;
     background: $color-background-secondary;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
     &:hover {
         transition: ease-in 0.15s;
@@ -260,8 +262,18 @@ header {
         cursor: pointer;
     }
 
-    a {
+    > a {
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: stretch;
+        min-height: 0;
+        padding: 2rem;
+        box-sizing: border-box;
         background-size: 0% 0%;
+        text-decoration: none;
+        color: inherit;
     }
 }
 
