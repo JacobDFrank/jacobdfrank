@@ -10,7 +10,7 @@ timePeriod: '2 Weeks In January 2017'
 ---
 
 
-####Goal
+#### Goal
 Tasked with redesigning a website that hadn’t been updated in more than a decade, filled with flash animations and gratuitous geocities gifs.
 
 
@@ -22,20 +22,20 @@ Tasked with redesigning a website that hadn’t been updated in more than a deca
 
 
 
-####Understanding the Brand
+#### Understanding the Brand
 Hawkes Media Group is a full-service digital media production company based near Boston, Massachusetts. Their need for a new website was urgent. One of their staff tried to create a new website 6 months earlier, but was too busy to complete it.
 
 ![contact page](https://www.jacobdfrank.com/images/hawkes/contact.png)
 
 
-####Assessing the Problem
+#### Assessing the Problem
 Compared to their old, busy-looking site, the client wanted to showcase their work in a much simpler, direct and focused way. The first thing I did was gain an understanding of what a digital media company needs on a site and who they wanted to attract to the site.
 
 ![sketches](https://www.jacobdfrank.com/images/hawkes/sketch1.jpg)
 
 ![mindmap](https://www.jacobdfrank.com/images/hawkes/Hawkes_Mindmap.png)
 
-####Designing the Site
+#### Designing the Site
 I created sketches on paper of a simple interface with a consistent layout. Then I created wireframes for each page. I also used a mind map and information architecture I’d created to guide me along the way.
 
 
@@ -45,11 +45,11 @@ Once the wireframes were finished I made a low-fidelity prototype and showed it 
 
 ![their work page](https://www.jacobdfrank.com/images/hawkes/hmg-work.png)
 
-####Coding
+#### Coding
 During the development of the site I found a way to give the client access to a CMS so that they could collaborate and make minor changes using Webflow. The project was developed using custom code that I would paste into the Webflow editor along with editor itself for a couple smaller things. CSS Flexbox was used for most of the site and it saved a lot of time with layout. JQuery was also used on some items like the mobile navigation.
 
 
-####Check it Out
+#### Check it Out
 The current website can be seen <a href="http://www.hawkesmediagroup.com/">here</a
 <br/>
 The old site's homepage is below

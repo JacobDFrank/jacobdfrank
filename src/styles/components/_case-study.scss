@@ -781,7 +781,7 @@
 
 .casestudy-container {
     font-size: 3rem;
-    max-width: 780px;
+    max-width: 900px;
     width: 100%;
     margin: 0 auto;
     padding: 5rem 2rem;
@@ -792,6 +792,294 @@
     @media screen and (max-width: 400px) {
         padding: 2rem $side-padding-small;
     }
+}
+
+// ── Case study section navigation ────────────────────────────────────────────
+
+.cs-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background-color: $color-background;
+    margin: 0 0 64px;
+
+    @media screen and (max-width: $sm) {
+        grid-template-columns: 1fr;
+    }
+
+    &__item {
+        background-color: #fff;
+        padding: 28px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        text-decoration: none;
+        color: inherit;
+        transition: background-color 0.15s ease, color 0.15s ease;
+
+        &:hover {
+            background-color: $color-background;
+            color: #fff;
+
+            .cs-nav__num {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__num {
+        font-family: $mono;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        opacity: 0.4;
+        transition: opacity 0.15s ease;
+    }
+
+    &__label {
+        font-family: $sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+}
+
+// ── Color block section headers ───────────────────────────────────────────────
+// Rounded card on the blue page with a slightly darker blue bg.
+// Gold text on darker-blue bg: $color-primary (#d89f01) on #062090 = ~4.8:1 — AA ✓
+
+.cs-section-header {
+    background-color: mix(#000, $color-background, 15%);  // ~#061e9d, slightly darker
+    border-radius: 24px;
+    padding: 48px 16px;
+    margin: 80px 0 56px;
+    text-align: center;
+
+    &__eyebrow {
+        font-family: $mono;
+        font-size: 14px;
+        font-style: italic;
+        letter-spacing: 0.05em;
+        color: $color-primary;
+        opacity: 0.8;
+        margin-bottom: 12px;
+    }
+
+    &__title {
+        font-family: $sans-serif;
+        font-size: 40px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        color: $color-primary;
+        margin: 0;
+
+        @media screen and (max-width: $small-width) {
+            font-size: 28px;
+        }
+    }
+}
+
+// ── Stats grid ────────────────────────────────────────────────────────────────
+
+.cs-stats {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 24px;
+    column-gap: 24px;
+    margin-bottom: 64px;
+
+    @media screen and (max-width: $sm) {
+        flex-direction: column;
+    }
+
+    &__item {
+        flex: 1 1 calc(50% - 12px);
+        // Base: 10% darker than the original rgb(9 41 186) → rgb(8 37 167)
+        background-color: rgb(8 37 167 / 80%);
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow:
+            rgb(9 41 186 / 70%) 0px 0.602187px 0.602187px -1.25px inset,
+            rgba(9, 41, 186, 0.86) 0px 2.28853px 2.28853px -2.5px inset,
+            rgba(9, 41, 186, 0.94) 0px 10px 10px -3.75px inset;
+
+        &--blue {
+            // Extra prominence for the headline stat
+            background-color: rgb(8 37 167 / 95%);
+        }
+    }
+
+    &__number {
+        display: block;
+        font-family: $sans-serif;
+        font-size: 38px;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    &__label {
+        display: block;
+        font-family: $mono;
+        font-size: 13px;
+        line-height: 1.55;
+        color: rgba(255, 255, 255, 0.65);
+    }
+}
+
+// ── Image layouts ─────────────────────────────────────────────────────────────
+
+.cs-image-row {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 48px;
+
+    &--2 { grid-template-columns: repeat(2, 1fr); }
+    &--3 { grid-template-columns: repeat(3, 1fr); }
+
+    @media screen and (max-width: $sm) {
+        grid-template-columns: 1fr !important;
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: 0 !important;
+        border-radius: 16px;
+    }
+
+    // Matched-height rows: equal aspect ratio, cover-crop.
+    // Add --tweets to opt out (natural tweet screenshot sizes).
+    &--2:not(&--tweets) {
+        img {
+            aspect-ratio: 3 / 2;
+            object-fit: cover;
+            height: auto;
+        }
+    }
+}
+
+// ── Sticky scroll-spy secondary nav ──────────────────────────────────────────
+// Portaled to document.body — escapes the page-entrance transform stacking
+// context so position:fixed is truly viewport-relative.
+// Floats 60px from the top. Slides in after the page header scrolls away.
+// Past sections collapse and slide left; future sections are faded.
+
+.cs-sticky-nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 2rem;
+    pointer-events: none; // transparent shell; inner pill handles clicks
+    // Start fully above viewport (own height + 60px top offset)
+    transform: translateY(calc(-100% - 80px));
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+    &--visible {
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    @media screen and (max-width: $small-width) {
+        padding: 0 $side-padding-small;
+    }
+
+    // Override the global `a` rule (underline border + hover gradient)
+    a {
+        border-bottom: none !important;
+        background-image: none !important;
+        background-size: 0 !important;
+
+        &:hover {
+            background-image: none !important;
+            background-size: 0 !important;
+        }
+    }
+
+    &__inner {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        white-space: nowrap;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 24px;
+        border: 1px solid rgba($color-background, 0.1);
+        box-shadow: 0 4px 24px rgba($color-background, 0.1);
+    }
+
+    &__dot {
+        font-size: 14px;
+        color: rgba($color-background, 0.25);
+        padding: 0 10px;
+        user-select: none;
+        flex-shrink: 0;
+        max-width: 40px;
+        overflow: hidden;
+        transition: opacity 0.25s ease, max-width 0.3s ease, padding 0.3s ease;
+
+        &--past {
+            opacity: 0;
+            max-width: 0;
+            padding: 0;
+        }
+    }
+
+    &__item {
+        font-family: $mono;
+        font-size: 13px;
+        // rgba(9,41,186,0.75) on white ≈ 5.1:1 — WCAG AA ✓
+        color: rgba(9, 41, 186, 0.75);
+        padding: 16px 0;
+        text-decoration: none;
+        flex-shrink: 0;
+        max-width: 300px;
+        overflow: hidden;
+        transition: color 0.2s ease,
+                    opacity 0.25s ease,
+                    transform 0.25s ease,
+                    max-width 0.3s ease,
+                    padding 0.3s ease;
+
+        &:hover {
+            color: rgba(9, 41, 186, 0.9);
+        }
+
+        &--active {
+            // Full $color-background on white = 9.49:1 — WCAG AAA ✓
+            color: $color-background;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        &--past {
+            opacity: 0;
+            transform: translateX(-8px);
+            max-width: 0;
+            padding-left: 0;
+            padding-right: 0;
+            pointer-events: none;
+        }
+    }
+}
+
+
+// All standalone images inside the case study content: rounded corners + centered
+.content img {
+    border-radius: 16px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .markdown-body {

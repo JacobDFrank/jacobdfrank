@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from './Layout';
 import SEO from './Seo';
+import CaseStudyNav from './CaseStudyNav';
 import { graphql, Link } from 'gatsby';
 
 const ProjectLayout = ({ data, location }) => {
@@ -9,13 +10,14 @@ const ProjectLayout = ({ data, location }) => {
     <Layout location={location}>
       <div className="casestudy-container">
         <div className="markdown-body">
-          <div>
+          <div id="cs-page-header">
             <p className="text-projects">
               <Link to="/#projects">Past projects:</Link>
             </p>
             <h1>{markdownRemark.frontmatter.title}</h1>
             <p>{markdownRemark.frontmatter.description}</p>
           </div>
+          <CaseStudyNav />
           <div className="content" dangerouslySetInnerHTML={{
             __html: markdownRemark.html
           }} />

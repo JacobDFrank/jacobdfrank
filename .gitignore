@@ -73,3 +73,6 @@ yarn-error.log
 
 # Local Netlify folder
 .netlify
+
+# Local Claude notes
+CLAUDE.md

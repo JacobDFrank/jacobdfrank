@@ -8,7 +8,7 @@ tags: 'Internship / Creative Tech'
 timePeriod: 'Summer 2017'
 ---
 
-####About
+#### About
 I spent the past summer in a paid internship with B-Reel in New York City. I primarily worked with the Development Team, helping to develop and design the implementation of components for clients such as AMEX and Quantcast. This was a great opportunity and incredible learning experience.
 
 <br/>
@@ -19,7 +19,7 @@ I spent the past summer in a paid internship with B-Reel in New York City. I pri
 
 ![b-reel, people on a couch](https://www.jacobdfrank.com/images/breel/breelCouch.png)
 
-####What I learned
+#### What I learned
 B-Reel taught me what the design and development lifecycle was like at an agency, how to finish projects and work alongside a professional design team instead. This process showed me how to effectively communicate as a designer and developer.
 
 I was also able to learn the JavaScript framework React on my own. Through experimentation and iteration, I learned a lot about the framework, as well as my own methods for learning software.

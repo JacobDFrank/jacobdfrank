@@ -10,7 +10,7 @@ tags: Internship / Product Design & Development
 timePeriod: Summer 2017 
 ---
 
-####About
+#### About
 I spent the past summer interning with Adobe in San Francisco on the Design Systems. I plan on writing a blog post about my experience working on internal tooling on my team.
 
 <br/>

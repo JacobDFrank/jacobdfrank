@@ -71,7 +71,7 @@ On a small team, Design Systems are helpful for the future but get in the way in
 ![About Page](/img/about-page.png "About Page")
 
 
-##### Designed for a Content Management System
+#### # Designed for a Content Management System
 
 * Since I knew I would be using a content management backend for the site to begin, we had in mind when designing the website that some pages and components would be reusable and customizable.
 * Event page and speaker page templates were created for use over time, as new events were crafted and speakers added to each event a basic set of reusable templates was created.

@@ -21,7 +21,7 @@ Learn new skills. Currently, much of my time has been spent with Three.js. But, 
 <br/>
 <br/>
 
-####About
+#### About
 I began this work as a way to fill my spare time with new challenges. In the end, I may have spent several weeks working on this little experiment, creating 40+ pieces of content. It was inspired by creatives like Beeple as well as friends like Luka Schulz who confronted a similar challenge. <br/><br/>Please look at some of my work I’ve created. Some are bonafide failures, most are not. After all, you learn the most from failure, right?
 
 <br/>
