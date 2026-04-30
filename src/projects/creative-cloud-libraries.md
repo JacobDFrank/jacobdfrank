@@ -1,11 +1,13 @@
 ---
 URLpath: /creative-cloud-libraries
 title: Creative Cloud Libraries
-published: true
-date: '2023-11-01'
-description: Led design across two projects expanding Creative Cloud Libraries — adding save to libraries feature to Adobe Firefly and redesigning the Libraries & Brands experience using Spectrum.
+published: false
+date: 2023-11-01
+description: Led design in expanding Creative Cloud Libraries, adding save to
+  libraries feature to Adobe Firefly and redesigning the Libraries & Brands
+  experience using Spectrum.
 tags: Adobe / Product Design
-timePeriod: '2023–2024'
+timePeriod: 2023–2024
 ---
 
 <div class="cs-nav-anchor" id="overview" data-label="Overview"></div>
