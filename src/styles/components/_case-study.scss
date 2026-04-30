@@ -963,20 +963,20 @@
 }
 
 // ── Sticky scroll-spy secondary nav ──────────────────────────────────────────
-// Portaled to document.body — escapes the page-entrance transform stacking
+// Portaled to document.body — escapes the page-entrance CSS transform stacking
 // context so position:fixed is truly viewport-relative.
-// Floats 60px from the top. Slides in after the page header scrolls away.
-// Past sections collapse and slide left; future sections are faded.
+// Floats 20px from the top. Slides in after the page header scrolls away.
+// Layout: [home circle] [← | section items | Go to other projects]
+// The home circle is a separate sibling to the section pill inside __row.
 
 .cs-sticky-nav {
     position: fixed;
-    top: 60px;
+    top: 20px;
     left: 0;
     right: 0;
     z-index: 100;
     padding: 0 2rem;
     pointer-events: none; // transparent shell; inner pill handles clicks
-    // Start fully above viewport (own height + 60px top offset)
     transform: translateY(calc(-100% - 80px));
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -1001,14 +1001,56 @@
         }
     }
 
-    &__inner {
+    // Row: centres the 900px layout and holds the home circle + pill side by side
+    &__row {
         max-width: 900px;
         margin: 0 auto;
-        padding: 0 24px;
         display: flex;
         align-items: center;
-        overflow: hidden;
-        white-space: nowrap;
+        gap: 8px;
+    }
+
+    // Home icon — circular pill to the left of the section strip.
+    // __item uses line-height:1 + padding:14px 0 + font-size:13px = 41px content,
+    // plus __inner's 1px top/bottom border = 43px total pill height.
+    // __home is set to exactly 43×43 (border-box) so width always equals height.
+    &__home {
+        flex-shrink: 0;
+        width: 43px;
+        height: 43px;
+        padding: 0;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.94);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba($color-background, 0.1);
+        box-shadow: 0 4px 24px rgba($color-background, 0.1);
+        color: rgba(9, 41, 186, 0.75);
+        transition: color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+
+        svg { display: block; }
+
+        &:hover {
+            color: $color-background;
+            background-color: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            box-shadow: 0 4px 24px rgba($color-background, 0.16);
+        }
+    }
+
+    // The visible pill — prev arrow, scrollable items, projects link
+    &__inner {
+        flex: 1;
+        min-width: 0;
+        padding: 0 6px;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        overflow: hidden; // clips children at border-radius so pill shape holds
         background: rgba(255, 255, 255, 0.94);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
@@ -1017,58 +1059,141 @@
         box-shadow: 0 4px 24px rgba($color-background, 0.1);
     }
 
+
+    // Prev / next arrow buttons — pinned to left and right edges of the pill
+    &__arrow {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border-radius: 8px;
+        // Same color as inactive items (AA contrast on white)
+        color: rgba(9, 41, 186, 0.75);
+        transition: color 0.2s ease, background-color 0.2s ease;
+
+        &:hover:not(:disabled) {
+            color: $color-background; // same full blue as the active label
+            background-color: rgba($color-background, 0.06);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: default;
+        }
+
+        svg {
+            display: block;
+        }
+    }
+
+    // Horizontally scrollable strip — programmatically scrolled to keep
+    // the active item centered. On narrow viewports inactive labels hang
+    // off each edge, softened by the mask gradient.
+    // --at-start / --at-end classes are set by JS reading actual scrollLeft
+    // so the fade only appears on edges where content genuinely overflows.
+    &__items {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar { display: none; }
+
+        // Default: fade both edges (content overflows on both sides)
+        mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 20px,
+            black calc(100% - 20px),
+            transparent
+        );
+        -webkit-mask-image: linear-gradient(
+            to right,
+            transparent,
+            black 20px,
+            black calc(100% - 20px),
+            transparent
+        );
+
+        // scrollLeft = 0: first item flush-left — no left fade
+        &--at-start {
+            mask-image: linear-gradient(
+                to right,
+                black,
+                black calc(100% - 20px),
+                transparent
+            );
+            -webkit-mask-image: linear-gradient(
+                to right,
+                black,
+                black calc(100% - 20px),
+                transparent
+            );
+
+            // All remaining items fit — no fades needed on either side
+            &.cs-sticky-nav__items--at-end {
+                mask-image: none;
+                -webkit-mask-image: none;
+            }
+        }
+
+        // Scrolled to end: last item fully visible — no right fade
+        &--at-end {
+            mask-image: linear-gradient(
+                to right,
+                transparent,
+                black 20px,
+                black
+            );
+            -webkit-mask-image: linear-gradient(
+                to right,
+                transparent,
+                black 20px,
+                black
+            );
+        }
+
+    }
+
     &__dot {
         font-size: 14px;
         color: rgba($color-background, 0.25);
-        padding: 0 10px;
+        padding: 0 8px;
         user-select: none;
         flex-shrink: 0;
-        max-width: 40px;
-        overflow: hidden;
-        transition: opacity 0.25s ease, max-width 0.3s ease, padding 0.3s ease;
-
-        &--past {
-            opacity: 0;
-            max-width: 0;
-            padding: 0;
-        }
     }
 
     &__item {
         font-family: $mono;
         font-size: 13px;
+        line-height: 1; // locks item height to exactly 13px so pill height = 43px
         // rgba(9,41,186,0.75) on white ≈ 5.1:1 — WCAG AA ✓
         color: rgba(9, 41, 186, 0.75);
-        padding: 16px 0;
+        padding: 14px 0;
         text-decoration: none;
         flex-shrink: 0;
-        max-width: 300px;
-        overflow: hidden;
-        transition: color 0.2s ease,
-                    opacity 0.25s ease,
-                    transform 0.25s ease,
-                    max-width 0.3s ease,
-                    padding 0.3s ease;
+        transition: color 0.2s ease;
 
         &:hover {
-            color: rgba(9, 41, 186, 0.9);
+            color: $color-background;
         }
 
         &--active {
-            // Full $color-background on white = 9.49:1 — WCAG AAA ✓
-            color: $color-background;
+            color: $color-background; // full blue — 9.49:1 on white (WCAG AAA ✓)
             font-weight: 600;
             text-decoration: underline;
             text-underline-offset: 3px;
-        }
-
-        &--past {
-            opacity: 0;
-            transform: translateX(-8px);
-            max-width: 0;
-            padding-left: 0;
-            padding-right: 0;
-            pointer-events: none;
         }
     }
 }
