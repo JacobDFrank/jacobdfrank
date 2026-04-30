@@ -1,11 +1,13 @@
 ---
 URLpath: /firefly-generation-history
 title: Firefly Generation History
-published: true
-date: '2025-02-15'
-description: Designed Generation History's shift from browser cache to cloud — delivering persistent asset storage, a full action suite, and cross-app access for 900M+ Firefly generations.
+published: false
+date: 2025-02-15
+description: Designed Generation History's shift from browser cache to cloud,
+  delivering persistent asset storage and cross-app access for 900M+ Firefly
+  generations.
 tags: Adobe / Product Design
-timePeriod: 'Jan–Feb 2025'
+timePeriod: Jan–Feb 2025
 ---
 
 <div class="cs-nav-anchor" id="overview" data-label="Overview"></div>
