@@ -72,14 +72,10 @@ main.page-entrance > * {
     }
 }
 
+// ── Body / inline links: fill-up highlight on hover ───────────────────────────
 a {
     text-decoration: none;
     background-repeat: no-repeat;
-    background-image: -webkit-gradient(linear,
-        left top,
-        left bottom,
-        color-stop(65%, transparent),
-        color-stop(0, white));
     background-image: linear-gradient(180deg, transparent 55%, $color-hover 0);
     -webkit-transition: background-size 0.25s ease;
     transition: background-size 0.25s ease;
@@ -89,12 +85,23 @@ a {
     &:hover {
         cursor: pointer;
         background-size: 100% 100%;
-        background-image: -webkit-gradient(linear,
-            left top,
-            left bottom,
-            color-stop(65%, transparent),
-            color-stop(0, white));
         background-image: linear-gradient(180deg, transparent 55%, $color-hover 0);
+    }
+}
+
+// ── Structural / nav links: no decoration, colour shift on hover ──────────────
+// .footer--links a is intentionally omitted — it uses the global fill animation.
+.cs-sticky-nav a {
+    background-image: none !important;
+    background-size: 0 !important;
+    border-bottom: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+        background-image: none !important;
+        background-size: 0 !important;
+        color: $color-primary;
+        cursor: pointer;
     }
 }
 
@@ -107,35 +114,48 @@ a {
         line-height: 200%;
     }
     &--intro {
+        font-family: $display;
         font-style: normal;
-        font-weight: bold;
-        font-size: 7rem;
-        line-height: 8.375rem;
-        /* identical to box height */
-        letter-spacing: -0.005em;
+        font-weight: 400;
+        // Viewport-responsive scale: 48px floor → grows with viewport → 130px cap.
+        // At 390px mobile: 48px. At 768px: ~92px. At 900px+: ~108px (capped at 130).
+        font-size: clamp(48px, 11.5vw, 130px);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
         padding-bottom: 2rem;
+
+        // Splitting.js wraps chars in inline spans; they need display:inline-block
+        // to accept transform/opacity from GSAP.
+        .word { display: inline-block; }
+        .char { display: inline-block; }
     }
 }
 
 .projectListing {
+    // All projectListing variants are headings — Space Grotesk 700.
+    // Font-family is explicit here so these elements don't rely on a
+    // utility class in the JSX to get the right face.
     &--project-title {
-        font-size: 3rem;
-        line-height: 4rem;
-        letter-spacing: 0.005em;
+        font-family: $display;
+        font-weight: 500;
+        font-size: 3.5rem;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
         padding-bottom: 1.5rem;
     }
     &--project-text {
+        font-family: $sans-serif;
         font-style: normal;
         font-weight: 600;
         font-size: 2rem;
         line-height: 180%;
     }
     &--title {
-        font-size: 4.5rem;
-        line-height: 6rem;
-        font-weight: bold;;
-        /* identical to box height */
-        letter-spacing: 0.005em;
+        font-family: $display;
+        font-weight: 400;
+        font-size: 5.5rem;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
         padding-bottom: 4rem;
     }
 }
@@ -216,6 +236,13 @@ header {
 .projects {
     a {
         border-bottom: none !important;
+        background-image: none !important;
+        background-size: 0 !important;
+    }
+
+    // Show the glow on all cards while the mouse is anywhere in the grid
+    &:hover .project::after {
+        opacity: 1;
     }
 
     &.grid {
@@ -254,12 +281,38 @@ header {
     background: $color-background-secondary;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.15s ease-in, transform 0.15s ease;
+
+    // ── Mouse-tracking spotlight glow ─────────────────────────────────────
+    // Radial gradient centered at cursor position (set via JS --mouse-x/y).
+    // Visible when the mouse is anywhere in the .projects grid (see above).
+    &::after {
+        content: ‘’;
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: opacity 0.35s ease;
+        background: radial-gradient(
+            480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba($color-primary, 0.11),
+            transparent 55%
+        );
+        pointer-events: none;
+        z-index: 0;
+    }
 
     &:hover {
-        transition: ease-in 0.15s;
         color: $color-background;
         background: $color-primary;
         cursor: pointer;
+        transform: translateY(-2px);
+
+        // Full gold card takes over — hide the glow overlay
+        &::after {
+            opacity: 0;
+        }
     }
 
     > a {
@@ -274,6 +327,8 @@ header {
         background-size: 0% 0%;
         text-decoration: none;
         color: inherit;
+        position: relative;
+        z-index: 1; // sits above the ::after glow layer
     }
 }
 
@@ -387,6 +442,78 @@ section.content {
         }
     }
     
+}
+
+// ── Intro section ─────────────────────────────────────────────────────────────
+// Original single-column layout is preserved. The orange is absolutely
+// positioned inside the section so it lives in the background behind the text,
+// taking up no layout space and not pushing anything around.
+
+.intro-section {
+    position: relative; // establishes the containing block for .orange-globe
+
+    // The orange floats in the upper-right of the section, partially off-edge.
+    // pointer-events: none lets clicks pass straight through to the page.
+    .orange-globe {
+        position: absolute;
+        top:   50%;
+        right: -64px;
+        transform: translateY(-55%);
+        width:  320px;  // 20 % smaller than the original 400px
+        height: 320px;
+        z-index: 0;           // behind the text (which has no z-index / stacks above)
+        pointer-events: none; // don't block clicks on the text
+
+        filter: drop-shadow(0 24px 64px rgba($color-primary, 0.14))
+                drop-shadow(0 4px 16px rgba(0, 0, 0, 0.30));
+
+        @media screen and (max-width: $md) {
+            width:  240px;  // 20 % smaller than the original 300px
+            height: 240px;
+            right:  -48px;
+        }
+
+        @media screen and (max-width: $sm) {
+            display: none;
+        }
+    }
+}
+
+
+// ── Orange globe (case study variant) ────────────────────────────────────────
+// Rendered via portal into body. OrangeEffects moves it to position:fixed at
+// bottom-right after a short delay. Three.js reads clientWidth/Height (140px)
+// before that happens so the canvas is sized correctly from the start.
+.orange-globe-cs {
+    width:  140px;
+    height: 140px;
+    cursor: grab;
+}
+
+// ── Orange effects ────────────────────────────────────────────────────────────
+
+// Zest: gold particles injected by OrangeEffects.jsx on fast mouse movement.
+.zest-particle {
+    position:       fixed;
+    border-radius:  50%;
+    background:     $color-primary;
+    pointer-events: none;
+    z-index:        9999;
+    animation:      zest-fly 0.8s ease-out forwards;
+    transform:      translate(-50%, -50%);
+}
+
+@keyframes zest-fly {
+    from {
+        opacity:   1;
+        transform: translate(-50%, -50%) translate(0px, 0px) scale(1);
+    }
+    to {
+        opacity:   0;
+        transform: translate(-50%, -50%)
+                   translate(var(--vx, 40px), var(--vy, -60px))
+                   scale(0.2);
+    }
 }
 
 @media screen and (min-width: 1680px) {

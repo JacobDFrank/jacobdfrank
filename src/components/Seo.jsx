@@ -54,6 +54,11 @@ function SEO({ description, lang, keywords, title }) {
 
       <link rel="shortcut icon" href={favicon} type="image/x-icon" />
       <link rel="icon" href={favicon} type="image/x-icon" />
+
+      {/* Space Grotesk (sans), Space Mono (mono), Instrument Serif (display name) */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
     </>
   );
 }

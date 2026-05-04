@@ -1,4 +1,4 @@
-/** Orange “juice” palette (matches former SCSS list). */
+/** Orange "juice" palette. */
 const JUICE_HEX = [
   '#ff6f00',
   '#ff8c42',
@@ -17,9 +17,30 @@ const JUICE_HEX = [
 ];
 
 /**
- * Random radial juice droplet positions (box-shadow string) for each click.
+ * Builds an array of droplet descriptors for the click animation.
+ * Each droplet flies outward from the cursor to a random position.
  * @param {number} count
- * @returns {string}
+ * @returns {{ tx: number, ty: number, color: string, size: number }[]}
+ */
+export function buildJuiceDroplets(count = 10) {
+  return Array.from({ length: count }, (_, i) => {
+    // Evenly space base angles around the full circle, then add some jitter
+    const baseAngle = (i / count) * Math.PI * 2;
+    const jitter = (Math.random() - 0.5) * ((Math.PI * 2) / count) * 0.75;
+    const angle = baseAngle + jitter;
+    const radius = 20 + Math.random() * 34;
+    return {
+      tx: Math.round(Math.cos(angle) * radius),
+      ty: Math.round(Math.sin(angle) * radius),
+      color: JUICE_HEX[Math.floor(Math.random() * JUICE_HEX.length)],
+      size: 3 + Math.floor(Math.random() * 4), // 3–6 px
+    };
+  });
+}
+
+/**
+ * @deprecated Use buildJuiceDroplets instead.
+ * Kept for reference; no longer called.
  */
 export function buildRandomJuiceBurstShadows(count = 14) {
   const parts = [];

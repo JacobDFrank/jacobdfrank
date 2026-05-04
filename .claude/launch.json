@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "Gatsby Dev Server",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "develop"],
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": ["-c", "export PATH=/Users/jfrank/.nvm/versions/node/v22.11.0/bin:$PATH && npm run develop"],
       "port": 8000
     }
   ]

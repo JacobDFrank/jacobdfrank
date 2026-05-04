@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from './Header';
 import Footer from './Footer';
 import OrangeJuiceCursor from './OrangeJuiceCursor';
 import '../styles/index.scss';
@@ -15,7 +14,6 @@ const Layout = ({ children }) => {
   return (
     <>
       <OrangeJuiceCursor />
-      <Header />
       <div
         className="page-entrance-shell"
         style={{ '--page-entrance-footer-delay': footerDelay }}

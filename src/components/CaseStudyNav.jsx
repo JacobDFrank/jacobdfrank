@@ -109,16 +109,25 @@ const CaseStudyNav = () => {
     return () => clearTimeout(t);
   }, [activeIndex, updateItemsEdgeState]);
 
+  // Use window.scrollTo instead of scrollIntoView — the page-entrance animation
+  // leaves transform:translate3d(0,0,0) on the casestudy-container (fill-mode:both),
+  // which creates a scroll port in Chrome/WebKit. scrollIntoView targets that
+  // container, finds no overflow:scroll/auto, and silently does nothing.
+  // window.scrollTo always scrolls the window, bypassing the transformed ancestor.
+  const scrollToId = (id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
+  };
+
   const handlePrev = () => {
     if (activeIndex <= 0) return;
-    document.getElementById(sections[activeIndex - 1].id)
-      ?.scrollIntoView({ behavior: 'smooth' });
+    scrollToId(sections[activeIndex - 1].id);
   };
 
   const handleNext = () => {
     if (activeIndex >= sections.length - 1) return;
-    document.getElementById(sections[activeIndex + 1].id)
-      ?.scrollIntoView({ behavior: 'smooth' });
+    scrollToId(sections[activeIndex + 1].id);
   };
 
   if (!mounted || sections.length === 0) return null;

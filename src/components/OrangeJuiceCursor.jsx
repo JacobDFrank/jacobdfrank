@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import orangeImg from '../images/orange.png';
-import { buildRandomJuiceBurstShadows } from '../utils/juiceBurstShadows';
+import { buildJuiceDroplets } from '../utils/juiceBurstShadows';
 
 /** True if el is a link, button, or other primary click target (including Gatsby `<Link>` → `<a>`). */
 function isInteractiveTarget(el) {
@@ -22,8 +22,9 @@ function isInteractiveTarget(el) {
 }
 
 /**
- * Custom orange cursor with randomized juice droplet burst on each click.
- * Orange stays scaled down while primary button is held.
+ * Custom orange cursor with flying juice-droplet burst on each click.
+ * Droplets are real DOM elements that animate outward, rather than a static
+ * box-shadow. Orange squeezes + twists while pressed.
  */
 const OrangeJuiceCursor = () => {
   const [active, setActive] = useState(false);
@@ -32,7 +33,7 @@ const OrangeJuiceCursor = () => {
   const [pressed, setPressed] = useState(false);
   const [burst, setBurst] = useState(false);
   const [burstKey, setBurstKey] = useState(0);
-  const [burstShadow, setBurstShadow] = useState('');
+  const [burstDroplets, setBurstDroplets] = useState([]);
   const burstTimer = useRef(null);
 
   useEffect(() => {
@@ -54,18 +55,15 @@ const OrangeJuiceCursor = () => {
     const onDown = (e) => {
       if (e.button !== 0) return;
       setPressed(true);
-      setBurstShadow(buildRandomJuiceBurstShadows(14));
+      setBurstDroplets(buildJuiceDroplets(10));
       setBurstKey((k) => k + 1);
       setBurst(true);
       if (burstTimer.current) window.clearTimeout(burstTimer.current);
-      burstTimer.current = window.setTimeout(() => setBurst(false), 720);
+      burstTimer.current = window.setTimeout(() => setBurst(false), 580);
     };
 
     const onUp = (e) => {
-      if (e.type === 'blur') {
-        setPressed(false);
-        return;
-      }
+      if (e.type === 'blur') { setPressed(false); return; }
       if (e.button !== 0) return;
       setPressed(false);
     };
@@ -105,13 +103,18 @@ const OrangeJuiceCursor = () => {
       }}
       aria-hidden="true"
     >
-      {burst && (
+      {burst && burstDroplets.map((drop, i) => (
         <span
-          key={burstKey}
-          className="juice-cursor__burst"
-          style={{ boxShadow: burstShadow }}
+          key={`${burstKey}-${i}`}
+          className="juice-cursor__droplet"
+          style={{
+            '--tx': `${drop.tx}px`,
+            '--ty': `${drop.ty}px`,
+            '--drop-color': drop.color,
+            '--drop-size': `${drop.size}px`,
+          }}
         />
-      )}
+      ))}
     </div>
   );
 };

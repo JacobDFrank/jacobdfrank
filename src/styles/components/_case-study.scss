@@ -794,6 +794,253 @@
     }
 }
 
+// ── Case study page header layout ─────────────────────────────────────────────
+
+// Flex row: breadcrumb on the left, Other Projects flyout on the right.
+.cs-page-header-nav {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    gap:             16px;
+    margin-bottom:   40px;
+
+    // Nested .cs-hn already has margin-bottom:40px — suppress it here.
+    .cs-hn {
+        margin-bottom: 0;
+    }
+
+    @media screen and (max-width: $small-width) {
+        flex-direction: column;
+        align-items:    flex-start;
+        gap:            12px;
+    }
+}
+
+// ── Other Projects flyout ─────────────────────────────────────────────────────
+
+// Wrapper that establishes the positioning context for the dropdown.
+.cs-projects-menu {
+    position:   relative;
+    flex-shrink: 0;
+}
+
+// iOS-style dropdown: blurred glass panel, rounded, row-per-project.
+.cs-projects-flyout {
+    position:   absolute;
+    top:        calc(100% + 8px);
+    right:      0;
+    min-width:  220px;
+    // Slightly darker than the page blue for contrast
+    background: rgba(9, 25, 150, 0.93);
+    backdrop-filter:         blur(20px) saturate(1.6);
+    -webkit-backdrop-filter: blur(20px) saturate(1.6);
+    border:        1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    overflow:      hidden;
+    z-index:       200;
+    box-shadow:
+        0 8px 40px rgba(0, 0, 0, 0.55),
+        0 2px 8px  rgba(0, 0, 0, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    // Spring entrance — matches iOS contextual menus
+    animation:        flyout-in 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    transform-origin: top right;
+
+    &__item {
+        display:     block;
+        padding:     13px 18px;
+        font-family: $mono;
+        font-size:   13px;
+        letter-spacing: 0.02em;
+        line-height: 1.4;
+        color:       rgba(255, 255, 255, 0.75);
+        // Override global link border + fill animation
+        border-bottom:   1px solid rgba(255, 255, 255, 0.06) !important;
+        background-image: none !important;
+        background-size:  0 !important;
+        transition:       background-color 0.12s ease, color 0.12s ease;
+
+        &:last-child {
+            border-bottom: none !important;
+        }
+
+        &:hover {
+            background-color:  rgba(255, 255, 255, 0.09) !important;
+            background-image:  none !important;
+            background-size:   0 !important;
+            color:             #fff;
+        }
+    }
+}
+
+@keyframes flyout-in {
+    from {
+        opacity:   0;
+        transform: scale(0.88) translateY(-4px);
+    }
+    to {
+        opacity:   1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+// Eyebrow above the case study title — shows the project time period.
+.cs-page-eyebrow {
+    font-family:     $mono;
+    font-size:       11px;
+    letter-spacing:  0.10em;
+    text-transform:  uppercase;
+    color:           rgba($color-primary, 0.55);
+    margin-bottom:   10px;
+}
+
+// ── Case study top-of-page navigation options ─────────────────────────────────
+// All variants share a common base (.cs-hn) then specialise.
+// Sits above the h1 in #cs-page-header; margin-bottom creates breathing room.
+
+// Shared: strip the global link animation from all nav elements
+.cs-hn,
+.cs-hn a,
+.cs-hn__crumb-home,
+.cs-hn__name {
+    background-image: none !important;
+    background-size: 0 !important;
+    border-bottom: none !important;
+}
+
+.cs-hn {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 40px;
+    transition: color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+
+    // ── 1 & 4: Icon or arrow circle ──────────────────────────────────────────
+    &--circle {
+        width: 36px;
+        height: 36px;
+        border-radius: 9999px;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.16) !important;
+        color: rgba(255, 255, 255, 0.6);
+
+        svg { display: block; }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+        }
+    }
+
+    // ── 2: Pill button (also used as <button> for the flyout trigger) ────────
+    &--pill {
+        gap: 8px;
+        height: 34px;
+        padding: 0 16px 0 16px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+        font-family: $mono;
+        font-size: 12px;
+        letter-spacing: 0.03em;
+        color: rgba(255, 255, 255, 0.6);
+        cursor: pointer; // correct on both <a> and <button>
+        // Reset <button> UA styles
+        -webkit-appearance: none;
+        appearance: none;
+
+        svg { display: block; flex-shrink: 0; }
+
+        // Menu icon: hidden on desktop, shown on mobile
+        .cs-hn--pill__menu-icon {
+            display: none;
+
+            @media screen and (max-width: $sm) {
+                display: block;
+            }
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.16);
+            color: #fff;
+        }
+    }
+
+    // ── 3: Breadcrumb ────────────────────────────────────────────────────────
+    &--breadcrumb {
+        gap: 10px;
+        font-family: $mono;
+        font-size: 16px;
+        letter-spacing: 0.02em;
+        align-items: baseline;
+
+        .cs-hn__crumb-home {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.2s ease;
+            &:hover { color: #fff; }
+        }
+
+        .cs-hn__sep {
+            color: rgba(255, 255, 255, 0.25);
+            user-select: none;
+        }
+
+        .cs-hn__crumb-current {
+            color: rgba(255, 255, 255, 0.35);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 420px;
+        }
+    }
+
+    // ── 5: "JF" monogram circle ──────────────────────────────────────────────
+    &--monogram {
+        width: 36px;
+        height: 36px;
+        border-radius: 9999px;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.16) !important;
+        font-family: $sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: rgba(255, 255, 255, 0.65);
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.18);
+            color: #fff;
+        }
+    }
+
+    // ── 6: Label stack ───────────────────────────────────────────────────────
+    &--label {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+
+        .cs-hn__meta {
+            font-family: $mono;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .cs-hn__name {
+            font-family: $mono;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+            color: rgba(255, 255, 255, 0.65);
+            transition: color 0.2s ease;
+
+            &:hover { color: #fff; }
+        }
+    }
+}
+
 // ── Case study section navigation ────────────────────────────────────────────
 
 .cs-nav {
@@ -837,9 +1084,9 @@
     }
 
     &__label {
-        font-family: $sans-serif;
-        font-size: 18px;
-        font-weight: 600;
+        font-family: $display;
+        font-size: 22px;
+        font-weight: 400;
         line-height: 1.3;
     }
 }
@@ -866,16 +1113,16 @@
     }
 
     &__title {
-        font-family: $sans-serif;
-        font-size: 40px;
-        font-weight: 700;
-        letter-spacing: -0.03em;
+        font-family: $display;
+        font-size: 48px;
+        font-weight: 400;
+        letter-spacing: -0.02em;
         line-height: 1.1;
         color: $color-primary;
         margin: 0;
 
         @media screen and (max-width: $small-width) {
-            font-size: 28px;
+            font-size: 32px;
         }
     }
 }
@@ -912,9 +1159,9 @@
 
     &__number {
         display: block;
-        font-family: $sans-serif;
-        font-size: 38px;
-        font-weight: 700;
+        font-family: $display;
+        font-size: 44px;
+        font-weight: 400;
         line-height: 1;
         margin-bottom: 10px;
         color: #fff;
@@ -960,6 +1207,14 @@
             height: auto;
         }
     }
+}
+
+// ── Section anchor targets ────────────────────────────────────────────────────
+// Keeps section headings from sliding under the fixed sticky nav when the
+// arrow buttons (or hash links) scroll to them.
+
+.cs-nav-anchor {
+    scroll-margin-top: 72px;
 }
 
 // ── Sticky scroll-spy secondary nav ──────────────────────────────────────────
@@ -1209,19 +1464,19 @@
 
 .markdown-body {
     h1 {
-        font-family: $sans-serif;
+        font-family: $display;
         font-style: normal;
-        font-weight: normal;
+        font-weight: 400;
 
         @media screen and (min-width: $xs) {
-            font-size: 36px;
-            line-height: 47px;
+            font-size: 44px;
+            line-height: 1.15;
             margin-bottom: 20px;
         }
 
         @media screen and (max-width: $xs) {
-            font-size: 28px;
-            line-height: 36px;
+            font-size: 34px;
+            line-height: 1.2;
             margin-bottom: 18px;
         }
     }
@@ -1243,20 +1498,29 @@
     }
 
     h2 {
-        font-family: $sans-serif;
+        font-family: $display;
         font-style: normal;
-        line-height: 160%;
-        font-weight: 500;
-        
+        line-height: 1.3;
+        font-weight: 400;
+
         @media screen and (min-width: $xs) {
-            font-size: 28px;
-            margin-bottom: 48px; 
+            font-size: 34px;
+            margin-bottom: 48px;
         }
 
         @media screen and (max-width: $xs) {
-            font-size: 22px;
-            margin-bottom: 36px; 
+            font-size: 26px;
+            margin-bottom: 36px;
         }
+    }
+
+    h4 {
+        font-family: $display;
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 1.25;
+        margin-top: 56px;
+        margin-bottom: 24px;
     }
 
     img {
@@ -1285,6 +1549,311 @@
         @media screen and (max-width: $xs) {
             font-size: 14px;
             margin-bottom: 20px;
+        }
+    }
+}
+
+// ── Standalone home icon button ───────────────────────────────────────────────
+// Used at the top and bottom of project pages (before the CaseStudyNav slides in
+// and as the final CTA). Matches the visual language of .cs-sticky-nav__home.
+
+.cs-home-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 40px;
+    padding: 0 18px 0 14px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    background-image: none !important;
+    background-size: 0 !important;
+    color: rgba(255, 255, 255, 0.65);
+    font-family: $mono;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+
+    svg { display: block; flex-shrink: 0; }
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.18) !important;
+        background-image: none !important;
+        background-size: 0 !important;
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.3) !important;
+        cursor: pointer;
+    }
+
+    // Icon-only variant (no text, perfect circle)
+    &--icon-only {
+        padding: 0;
+        width: 40px;
+    }
+}
+
+// ── Pull quote ────────────────────────────────────────────────────────────────
+// Used for the key tension/design challenge statement at the end of a problem
+// section. Large gold text with a left rule — breaks up dense body paragraphs.
+
+.cs-pull-quote {
+    font-family: $display;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $color-primary;
+    border-left: 3px solid rgba($color-primary, 0.6);
+    padding: 2px 0 2px 24px;
+    margin: 48px 0;
+
+    @media screen and (max-width: $small-width) {
+        font-size: 20px;
+    }
+}
+
+// ── Action grid ───────────────────────────────────────────────────────────────
+// 2-column card grid for feature/action breakdowns. Each card shows the action
+// name as a small gold mono label and the description in dimmed body text.
+// An odd last child spans full width so the grid never ends with a gap.
+
+.cs-action-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 32px 0 48px;
+
+    @media screen and (max-width: $sm) {
+        grid-template-columns: 1fr;
+    }
+
+    &__item {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 14px;
+        padding: 18px 20px;
+
+        // Last item spans full width when total count is odd
+        &:last-child:nth-child(odd) {
+            grid-column: 1 / -1;
+        }
+    }
+
+    &__name {
+        display: block;
+        font-family: $mono;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: $color-primary;
+        margin-bottom: 6px;
+    }
+
+    &__desc {
+        display: block;
+        font-family: $mono;
+        font-size: 14px;
+        line-height: 1.55;
+        color: rgba(255, 255, 255, 0.55);
+    }
+}
+
+// ── Numbered list ─────────────────────────────────────────────────────────────
+// Two-column flex rows with a gold counter, bold heading, and dimmed body.
+// Used for constraints (2 items) and "What I Learned" (3 items).
+
+.cs-numbered-list {
+    margin: 32px 0 48px;
+
+    &__item {
+        display: flex;
+        gap: 24px;
+        padding: 24px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+        &:last-child {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+    }
+
+    &__num {
+        font-family: $mono;
+        font-size: 12px;
+        font-weight: 700;
+        color: $color-primary;
+        opacity: 0.75;
+        flex-shrink: 0;
+        min-width: 24px;
+        padding-top: 3px;
+    }
+
+    &__heading {
+        font-family: $display;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1.3;
+        color: rgba(255, 255, 255, 0.92);
+        margin: 0 0 8px;
+    }
+
+    &__body {
+        font-family: $mono;
+        font-size: 15px;
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.55);
+        margin: 0;
+    }
+}
+
+// ── "What I Learned" gradient wrap ────────────────────────────────────────────
+// Negative side margins cancel the container's 2rem padding so the gradient
+// runs edge-to-edge within the content column. Negative bottom margin covers
+// the container's bottom padding so the gradient fills to the page bottom.
+
+.cs-learned-wrap {
+    margin: 48px -2rem -5rem;
+    padding: 56px 2rem 5rem;
+    background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(0, 0, 0, 0.24) 100%
+    );
+    border-radius: 24px 24px 0 0;
+
+    @media screen and (max-width: $small-width) {
+        margin-left: -$side-padding-small;
+        margin-right: -$side-padding-small;
+        margin-bottom: -3rem;
+        padding-left: $side-padding-small;
+        padding-right: $side-padding-small;
+        padding-bottom: 3rem;
+    }
+
+    // h4 inside the wrap inherits markdown-body styles;
+    // just nudge top margin to work with the wrap's top padding.
+    h4 {
+        margin-top: 0;
+        margin-bottom: 24px;
+    }
+}
+
+// ── Image captions ────────────────────────────────────────────────────────────
+// Markdown pattern: image on one line, then *Caption text* on the next.
+// remark renders this as: <p><img></p><p><em>Caption</em></p>
+// The selector targets an <em> that is the sole child of a <p> that immediately
+// follows a <p> containing an image — matching the eyebrow/label style.
+
+.content {
+    p:has(> img) + p > em,
+    p:has(> img:only-child) + p > em {
+        display: block;
+        font-family: $mono;
+        font-size: 13px;
+        font-style: italic;
+        letter-spacing: 0.05em;
+        color: $color-primary;
+        opacity: 0.8;
+        text-align: center;
+        margin-top: -36px;   // pull up under the image
+        margin-bottom: 48px;
+    }
+}
+
+// Same for .cs-image-row: a caption paragraph right after a row
+.cs-image-row + p > em {
+    display: block;
+    font-family: $mono;
+    font-size: 13px;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    color: $color-primary;
+    opacity: 0.8;
+    text-align: center;
+    margin-top: -36px;
+    margin-bottom: 48px;
+}
+
+// ── Native markdown element styles ────────────────────────────────────────────
+// These replace the HTML component classes (.cs-pull-quote, .cs-numbered-list)
+// for case study content. Scoped to .content so they don't bleed into other
+// markdown contexts. Placed last so they override earlier .markdown-body rules.
+
+// Blockquote → pull quote
+// Render: large gold bold text with a left rule.
+// Markdown: > Your pull quote text here
+.content blockquote {
+    border-left: 3px solid rgba($color-primary, 0.6);
+    padding: 2px 0 2px 24px;
+    margin: 48px 0;
+
+    // remark wraps blockquote text in <p>; override the .markdown-body p rules
+    p {
+        font-family: $display;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: $color-primary;
+        margin-bottom: 0;
+    }
+
+    @media screen and (max-width: $small-width) {
+        p { font-size: 20px; }
+    }
+}
+
+// Ordered list → numbered insight / constraint list
+// Pattern: 1. **Heading** (blank line + 3-space indent) Body paragraph
+// remark renders this as a loose list: each item gets <p> children.
+// Render: gold decimal-leading-zero counter, horizontal rules between items,
+//         sans-serif heading + mono dimmed body.
+.content ol {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: cs-item;
+    margin: 32px 0 48px;
+
+    > li {
+        position: relative;
+        padding: 24px 0 24px 48px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        counter-increment: cs-item;
+        font-size: initial;
+        word-wrap: normal;
+
+        &::before {
+            content: counter(cs-item, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: 27px;
+            font-family: $mono;
+            font-size: 12px;
+            font-weight: 700;
+            color: $color-primary;
+            opacity: 0.75;
+        }
+
+        &:last-child {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        // First <p> in the item = the **Bold heading** line
+        > p:first-child {
+            font-family: $display;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.3;
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 8px !important;
+        }
+
+        // Subsequent <p> elements = body text
+        > p:not(:first-child) {
+            font-family: $mono;
+            font-size: 15px;
+            line-height: 1.65;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 0 !important;
         }
     }
 }

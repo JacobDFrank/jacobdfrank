@@ -1,8 +1,6 @@
-// Custom cursor + per-click randomized juice burst (box-shadow built in JS).
-// Droplet silhouette matches `juice-cursor__burst` in OrangeJuiceCursor.jsx.
-
-$juice-drop-w: 0.36rem;
-$juice-drop-h: 0.52rem;
+// Custom cursor + per-click flying juice droplets.
+// Press: orange squeezes tight + twists. Release: springs back.
+// Droplets: real DOM spans that translate outward and fade out.
 
 body.has-juice-cursor,
 body.has-juice-cursor * {
@@ -33,54 +31,53 @@ body.has-juice-cursor * {
         margin: -50% 0 0 -50%;
         background: var(--juice-cursor-img) center / contain no-repeat;
         transform-origin: center center;
-        transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+        transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     &--interactive::before {
         transform: scale(1.4);
     }
 
+    // Squeeze + slight twist — more personality than a plain scale
     &--pressed::before {
-        transform: scale(0.68);
-        transition-duration: 0.12s;
+        transform: scale(0.55) rotate(14deg);
+        transition-duration: 0.09s;
     }
 }
 
-.juice-cursor__burst {
+// ── Flying droplets ────────────────────────────────────────────────────────────
+// Each droplet is a real <span> positioned at the cursor centre that translates
+// outward to (--tx, --ty) while shrinking and fading. Much more dynamic than
+// the static box-shadow approach.
+
+.juice-cursor__droplet {
     position: absolute;
     top: 50%;
     left: 50%;
-    z-index: -1;
-    width: $juice-drop-w;
-    height: $juice-drop-h;
-    margin: 0;
-    border-radius: 50% 50% 45% 50% / 48% 48% 58% 52%;
-    transform: translate(-50%, -50%) rotate(-38deg);
-    transform-origin: center center;
+    width: var(--drop-size, 5px);
+    height: var(--drop-size, 5px);
+    border-radius: 50%;
+    background: var(--drop-color, #ff8c42);
     pointer-events: none;
-    background: linear-gradient(
-        155deg,
-        rgba(255, 214, 150, 0.95) 0%,
-        #ff8c42 38%,
-        #e85d04 72%,
-        #b84a08 100%
-    );
-    animation: juice-burst-fade 0.72s ease-out both;
+    animation: juice-droplet-fly 0.55s cubic-bezier(0.2, 0, 0.55, 1) forwards;
+    z-index: -1;
 }
 
-@keyframes juice-burst-fade {
-
-    0%,
-    16% {
-        opacity: 0;
-    }
-
-    22%,
-    48% {
+@keyframes juice-droplet-fly {
+    0% {
+        transform: translate(-50%, -50%) scale(1.1);
         opacity: 1;
     }
 
+    35% {
+        opacity: 0.85;
+    }
+
     100% {
+        transform: translate(
+            calc(-50% + var(--tx, 0px)),
+            calc(-50% + var(--ty, 0px))
+        ) scale(0.12);
         opacity: 0;
     }
 }
