@@ -1,8 +1,11 @@
 ---
 URLpath: /cc-projects
 title: Creative Cloud Projects
+published: false
 date: 2025-04-15
-description: Led design expanding Creative Cloud Projects across Ps, Ai, Id, Firefly, and Adobe Home. Plus enterprise features for organizations with hundreds of projects.
+description: Led design expanding Creative Cloud Projects across Ps, Ai, Id,
+  Firefly, and Adobe Home. Plus enterprise features for organizations with
+  hundreds of projects.
 tags: Adobe / Product Design
 timePeriod: April 2020 – April 2025
 ---
