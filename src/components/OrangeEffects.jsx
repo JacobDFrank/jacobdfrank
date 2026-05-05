@@ -9,13 +9,11 @@
  *           While moving the orange physically touches DOM elements:
  *             • a real WebGL / GLSL fragment shader renders concentric
  *               gold ripple rings centred on the orange
- *             • every element the orange circle overlaps gets a CSS
- *               `translate` displacement — pushed away from the centre
  *           When settled the orange stops rotating.
  *
  * Props:
  *   variant  'home'   — orange drifts free after 3.8 s (reparented to body)
- *            'small'  — orange appears immediately at bottom-right, 140 px,
+ *            'small'  — orange appears immediately at bottom-right, 107 px,
  *                       already settled (used on case study pages)
  */
 
@@ -91,17 +89,11 @@ const initRippleGL = () => {
   const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
   if (!gl) { canvas.remove(); return null; }
 
-  // ── Vertex shader — full-screen clip-space quad ──────────────────────────
   const vert = `
     attribute vec2 a_pos;
     void main() { gl_Position = vec4(a_pos, 0.0, 1.0); }
   `;
 
-  // ── Fragment shader ──────────────────────────────────────────────────────
-  // wave(dist) = sin(dist * freq - time * speed) * amplitude * falloff * inner_fade
-  // • freq / speed control ring density and animation pace
-  // • exp falloff fades rings with distance
-  // • smoothstep inner_fade prevents rings at the orange centre
   const frag = `
     precision mediump float;
 
@@ -111,14 +103,12 @@ const initRippleGL = () => {
     uniform float u_time;
 
     void main() {
-      // Flip Y so (0,0) is top-left, matching DOM coordinates
       vec2  fc   = vec2(gl_FragCoord.x, u_res.y - gl_FragCoord.y);
       float dist = distance(fc, u_ctr);
 
       float vel   = clamp(u_vel * 0.055, 0.0, 1.0);
-      float amp   = vel * 0.22;   // reduced — rings are supporting detail, not dominant
+      float amp   = vel * 0.22;
 
-      // No rings inside the orange itself
       float inner = smoothstep(0.0, 64.0, dist);
 
       float wave  = sin(dist * 0.11 - u_time * 14.0)
@@ -133,7 +123,6 @@ const initRippleGL = () => {
     }
   `;
 
-  // ── Compile + link ────────────────────────────────────────────────────────
   const mkSh = (type, src) => {
     const s = gl.createShader(type);
     gl.shaderSource(s, src);
@@ -146,7 +135,6 @@ const initRippleGL = () => {
   gl.linkProgram(prog);
   gl.useProgram(prog);
 
-  // ── Full-screen quad (two triangles) ──────────────────────────────────────
   const buf = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, buf);
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
@@ -193,34 +181,6 @@ const initRippleGL = () => {
 
 
 // ─────────────────────────────────────────────────────────────────────────────
-//  Element displacement — CSS `translate` on every DOM element the orange
-//  circle physically overlaps.  Immediate: no filter latency, no lerp.
-//
-//  Detection: nearest point on element rect to orange centre < orange radius.
-//  Push direction: element centre → away from orange centre.
-//  Amplitude: penetration depth × speed × scale factor.
-// ─────────────────────────────────────────────────────────────────────────────
-
-const DISPLACE_SEL = [
-  // Block-level text elements
-  'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-  // Inline interactive
-  'a', 'button', 'li',
-  // Homepage — project cards
-  '.project', '.projectListing--project-text',
-  // Homepage — intro / about / footer
-  '.about--intro', '.about--text',
-  '.projectListing--title', '.footer--link',
-  // Splitting.js chars (used on .about--intro)
-  'span.char', 'span.word',
-  // Case study elements
-  '.cs-hn', '.cs-stats__item',
-  '.cs-section-header__title', '.cs-section-header__eyebrow',
-  '.cs-page-eyebrow',
-].join(', ');
-
-
-// ─────────────────────────────────────────────────────────────────────────────
 //  Drift — 2D physics engine (shared by home and small variants)
 //
 //  opts:
@@ -252,91 +212,18 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
   let isDragging    = false;
   let dragOffsetX   = 0, dragOffsetY = 0;
   let throwSamples  = [];
-  let dragSpeed     = 0;   // velocity magnitude while dragging
+  let dragSpeed     = 0;
   let animId;
   let hasDrifted    = false;
   let originalParent = null;
   let glTime        = 0;
-  let frameCount    = 0;
 
-  // ── GLSL ripple canvas ────────────────────────────────────────────────────
   const glRipple = initRippleGL();
-
-  // ── Element displacement state ────────────────────────────────────────────
-  const displacedEls = new Set();
-  let elCache = null;
-
-  const getEls = () => {
-    // Refresh element list every ~1.5 s (90 frames) to catch DOM changes
-    if (!elCache || frameCount % 90 === 0) {
-      elCache = Array.from(document.querySelectorAll(DISPLACE_SEL));
-    }
-    return elCache;
-  };
-
-  const applyDisplace = (speed) => {
-    const el = orangeRef.current;
-    if (!el) return;
-
-    if (speed < 0.5) {
-      displacedEls.forEach(e => { e.style.translate = ''; });
-      displacedEls.clear();
-      return;
-    }
-
-    const or  = el.getBoundingClientRect();
-    const ocx = or.left + or.width  / 2;
-    const ocy = or.top  + or.height / 2;
-    const rad = or.width / 2;   // exact orange radius
-
-    getEls().forEach(e => {
-      // Skip off-screen
-      const r = e.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight ||
-          r.right  < 0 || r.left > window.innerWidth) {
-        if (displacedEls.has(e)) { e.style.translate = ''; displacedEls.delete(e); }
-        return;
-      }
-
-      // Nearest point on rect to orange centre — true circle-AABB intersection
-      const clampX = Math.max(r.left, Math.min(r.right,  ocx));
-      const clampY = Math.max(r.top,  Math.min(r.bottom, ocy));
-      const dist   = Math.sqrt((clampX - ocx) ** 2 + (clampY - ocy) ** 2);
-
-      if (dist > rad) {
-        if (displacedEls.has(e)) { e.style.translate = ''; displacedEls.delete(e); }
-        return;
-      }
-
-      // Push direction: element centre → away from orange centre
-      const ecx    = r.left + r.width  / 2;
-      const ecy    = r.top  + r.height / 2;
-      const dxDir  = ecx - ocx || 0.01;
-      const dyDir  = ecy - ocy || 0.01;
-      const dLen   = Math.sqrt(dxDir ** 2 + dyDir ** 2) || 1;
-      const nx     = dxDir / dLen;
-      const ny     = dyDir / dLen;
-
-      // Amplitude: deeper penetration → larger push; scales with speed
-      const penetration = Math.pow((rad - dist) / rad, 0.8);
-      const amp         = Math.min(speed * 1.8, 42) * penetration;
-
-      e.style.translate = `${(nx * amp).toFixed(1)}px ${(ny * amp).toFixed(1)}px`;
-      displacedEls.add(e);
-    });
-  };
-
-  const clearEffects = () => {
-    displacedEls.forEach(e => { e.style.translate = ''; });
-    displacedEls.clear();
-    if (glRipple) glRipple.clear();
-  };
 
   // ── Physics loop ──────────────────────────────────────────────────────────
   const physicsLoop = () => {
     animId = requestAnimationFrame(physicsLoop);
     if (!hasDrifted) return;
-    frameCount++;
 
     const el = orangeRef.current;
     if (!el) return;
@@ -370,17 +257,15 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
       if (isSettledRef) isSettledRef.current = atRest;
     }
 
-    // Current speed: drag speed while dragging, physics speed otherwise
     const speed = isDragging
       ? dragSpeed
       : Math.sqrt(velX ** 2 + velY ** 2);
 
     glTime += 0.016;
 
-    // GLSL ripple rings
     if (glRipple) {
       if (speed > 0.5) {
-        const r  = el.getBoundingClientRect();
+        const r = el.getBoundingClientRect();
         glRipple.draw(
           r.left + r.width  / 2,
           r.top  + r.height / 2,
@@ -391,9 +276,6 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
         glRipple.clear();
       }
     }
-
-    // Per-element CSS translate displacement
-    applyDisplace(speed);
   };
 
   // ── Settle timer ──────────────────────────────────────────────────────────
@@ -402,7 +284,7 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
     if (!el) return;
 
     if (startAtFloor) {
-      const SIZE = size || 140;
+      const SIZE = size || 107;
       orangeW = SIZE;
       orangeH = SIZE;
       posX    = window.innerWidth  - SIZE - 24;
@@ -471,7 +353,6 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
     throwSamples.push({ x, y, t: now });
     if (throwSamples.length > 6) throwSamples.shift();
 
-    // Live drag speed for the ripple / displacement while held
     if (throwSamples.length >= 2) {
       const a  = throwSamples[throwSamples.length - 2];
       const b  = throwSamples[throwSamples.length - 1];
@@ -512,12 +393,12 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
   return () => {
     clearTimeout(settleTimer);
     cancelAnimationFrame(animId);
-    clearEffects();
+    if (glRipple) glRipple.clear();
     if (glRipple) glRipple.destroy();
-    window.removeEventListener('mousemove',  onDragMove);
-    window.removeEventListener('mouseup',    onDragEnd);
-    window.removeEventListener('touchmove',  onDragMove);
-    window.removeEventListener('touchend',   onDragEnd);
+    window.removeEventListener('mousemove', onDragMove);
+    window.removeEventListener('mouseup',   onDragEnd);
+    window.removeEventListener('touchmove', onDragMove);
+    window.removeEventListener('touchend',  onDragEnd);
 
     const el = orangeRef.current;
     if (el) {
@@ -543,7 +424,7 @@ const OrangeEffects = ({ variant = 'home' }) => {
 
     const stopZest  = startZest();
     const stopDrift = variant === 'small'
-      ? startDrift(orangeRef, isSettledRef, { delay: 100, size: 140, startAtFloor: true, reparent: false })
+      ? startDrift(orangeRef, isSettledRef, { delay: 100, size: 107, startAtFloor: true, reparent: false })
       : startDrift(orangeRef, isSettledRef, { delay: 3800, reparent: true });
 
     return () => { stopZest(); stopDrift(); };

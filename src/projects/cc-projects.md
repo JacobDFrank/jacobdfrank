@@ -1,11 +1,8 @@
 ---
 URLpath: /cc-projects
 title: Creative Cloud Projects
-published: false
 date: 2025-04-15
-description: Led design on expanding Creative Cloud Projects across Photoshop,
-  Illustrator, InDesign, Firefly, and Adobe Home — plus Connected Enterprise
-  features for organizations with hundreds of projects.
+description: Led design expanding Creative Cloud Projects across Ps, Ai, Id, Firefly, and Adobe Home. Plus enterprise features for organizations with hundreds of projects.
 tags: Adobe / Product Design
 timePeriod: April 2020 – April 2025
 ---
@@ -14,69 +11,80 @@ timePeriod: April 2020 – April 2025
 
 #### Overview
 
-Creative Cloud Projects is Adobe's shared workspace for storage, collaboration, and asset organization across the Creative Cloud ecosystem. A project can hold a Photoshop document, an Illustrator file, a Firefly generation, and a board all in one place — with permissions, members, and version history attached.
+Projects is Adobe's solution for sharing a group of assets across the Creative Cloud ecosystem. They can hold folders and any file type with permissions and sharing settings for teams and enterprises.
 
-I led design on the second half of the multi-year rollout: bringing Projects into the flagship desktop and web apps (Photoshop, Illustrator, InDesign), the Universal Asset Browser, and Adobe Home and Firefly. Alongside that, I designed Connected Enterprise — the features that let organizations with hundreds of projects manage workspaces, profiles, and creation permissions at scale.
+I led design for the second half of the multi-year rollout, bringing Projects into flagship desktop and web apps (Photoshop, Illustrator, InDesign), as well as Adobe Home and Firefly. Alongside that, I designed enterprise features that let organizations with hundreds of projects manage workspaces, profiles, and creation permissions at scale.
 
-By launch, **Projects had expanded to 10 apps** and **MAU grew 27% to 376K**, with 82% of users on paid plans.
+Post-launch, **Projects had expanded to 10 apps**, and **MAU grew 27% to 376K**, with 82% of users on paid plans.
 
-<!-- IMAGE: Hero — Projects view inside Photoshop or the Universal Asset Browser, showing a populated project grid -->
+![Projects view across Creative Cloud apps](/ccProjects/hero%20image.png)
 
 <div class="cs-section-header" id="project-1">
-  <div class="cs-section-header__eyebrow">Project 01</div>
+  <div class="cs-section-header__eyebrow">Part 1</div>
   <div class="cs-section-header__title">Projects in the flagship apps</div>
 </div>
 
-The strategic call was to ship Projects into Photoshop, Illustrator, and InDesign before the rest of the Adobe ecosystem was fully ready. Getting the surface in front of real users early — even with rough edges — was worth more than waiting for full feature parity. From within Photoshop, users could finally share assets and collaborate across a real file management structure, something the desktop apps had never had.
+The strategic call was to ship Projects into Photoshop, Illustrator, and InDesign before the rest of the Adobe ecosystem was fully ready. Getting the surface in front of real users early and providing value was worth more than waiting for full feature parity with Adobe Express. Within Photoshop, users could finally share assets and collaborate through a file management structure, something the desktop apps never had.
 
 <div class="cs-nav-anchor" id="cards" data-label="Cards & metadata"></div>
 
 #### Cards & metadata
 
-Projects can contain any file type, and every file has to be visible — hiding unsupported formats would feel like data loss. The card had to communicate provenance (which app made this), sync state, and last-edited metadata in a small footprint that worked in a side panel as well as a full-page grid.
+Hiding unsupported formats would feel like data loss, so every file in a Project had to be visible. The cards had to communicate file type, sync state, location, and last-edited metadata in a small footprint that worked in both a panel and a full-page grid.
 
-<!-- IMAGE: Card grid showing mixed file types (Ps, Ai, Express, Firefly assets) inside a project -->
+![Card grid showing mixed file types — Ps, Ai, Express, and Firefly assets inside a project](/ccProjects/mixed%20files%20in%20project.png)
 
-For files the host app couldn't open — an Express document inside Photoshop, an Illustrator file inside InDesign — I designed an "Open in another app" view that handed the user off cleanly without making the file feel inaccessible.
+*Mixed file types in a project — the cards communicate file type, sync state, and last-edited metadata at a glance.*
 
-<!-- IMAGE: "Open in another app" state, e.g. an .indd file selected inside Photoshop -->
+For files the host app couldn't open, I designed an "Open in another app" view that handed the user off cleanly without making the file feel inaccessible.
 
 <div class="cs-nav-anchor" id="loading" data-label="Skeleton loading"></div>
 
 #### Skeleton loading, coded in CSS
 
-Project content loads from the cloud, often over slow connections inside a heavy app like Photoshop. A spinner in that context reads as failure. I designed a ghost-loading skeleton that mirrors the card grid — and coded the CSS animation myself rather than handing it off as a spec. The result reads as "content arriving" instead of "app stuck."
-
-<!-- IMAGE: Skeleton loading state, ideally a short loop or before/after frame -->
+Project content loads from the cloud, often over slow connections inside a heavy app like Photoshop. A spinner in that context reads as failure, and with limited scope, I designed and coded a ghost-loading skeleton animation that mirrored the cards.
 
 <div class="cs-nav-anchor" id="navigation" data-label="Navigation, members, delete"></div>
 
 #### Navigation, members, delete
 
-I added a breadcrumb navigation component for moving in and out of nested projects, designed the member-management screens for adding people and assigning roles, and worked through the delete flow — which had to be reassuring without being annoying, since accidental deletes inside a shared workspace cascade across collaborators.
+I added a breadcrumb navigation component for moving in and out of projects as well as any folders nested within them, designed the member-management screens for adding people and assigning roles, and worked through the delete flow, which had to be reassuring without being annoying, since accidental deletes inside a shared workspace cascade across collaborators.
 
-<div class="cs-image-row cs-image-row--2">
-  <!-- IMAGE: Breadcrumb navigation inside a project (PS or UAB) -->
-  <!-- IMAGE: Member management screen — adding/removing collaborators -->
+<div class="cs-image-row cs-image-row--2 cs-image-row--tweets">
+  <img src="/ccProjects/breadcrumbs.png" alt="Breadcrumb navigation inside a project" />
+  <img src="/ccProjects/Member%20management.png" alt="Member management screen — adding and removing collaborators" />
 </div>
 
-<!-- IMAGE: Delete-from-project confirmation flow -->
+*Breadcrumb nav (left) and member management (right).*
+
+![Delete-from-project confirmation dialog](/ccProjects/Delete%20project%20dialog.png)
+
+*The delete flow had to be clear without being alarming — accidental deletes in a shared workspace affect everyone.*
 
 <div class="cs-nav-anchor" id="onboarding" data-label="Onboarding & empty states"></div>
 
-#### Onboarding & empty states
+#### Onboarding
 
-There are roughly 20 different empty states for Projects across the suite. Some change only the copy — "this project is empty" reads differently in Illustrator than it does in Firefly. Others change the illustration, the primary action, or the surrounding chrome based on which app is hosting it. A user's first time inside a project is the moment Projects either lands as a feature or fades into the chrome, so each variation had to land specifically in its own context.
+A user's first time inside a project is the moment Projects either lands as a feature or fades into the background, so I adjusted copy and made sure creating a project was easy and involved no more than a few clicks. It was meant to feel like creating a folder, but with more features.
 
-<!-- IMAGE: Grid of empty-state variations across multiple apps -->
+![Early view of the files animation in Adobe Home](/ccProjects/Early%20view%20of%20the%20files%20animation%20in%20Adobe%20home.gif)
+
+*Early exploration of the Projects entry point in Adobe Home — the animation helped surface active projects without requiring navigation.*
 
 <div class="cs-nav-anchor" id="sync" data-label="Sync simplification"></div>
 
 #### Sync simplification
 
-A large body of work that didn't ship with a marketing moment: redesigning the experience for saving project files for offline use. The previous flow asked users to repeatedly choose offline status, which created a long tail of sync churn — files getting pushed to and pulled from cloud storage in patterns that weren't useful to anyone.
+A large body of work that didn't ship with a marketing moment: redesigning the experience for saving files for offline use. To build more trust in our cloud storage solution and reduce cloud spend, we had to adjust the offline syncing flow to avoid cloud sync errors.
 
-The redesign collapsed those decisions into a saner default sync model.
+It was an important feature to nail because most desktop users worked with local files, so when they used cloud files, we had to make it just as seamless. The previous process caused a lot of headaches if cloud files were edited by someone else while the user was offline. The previous flow, designed half a decade earlier, hid the offline status and syncing, so I redesigned it, reducing the number of states and making it more obvious when a file would be available offline or had a different sync status.
+
+<div class="cs-image-row cs-image-row--2 cs-image-row--tweets">
+  <img src="/ccProjects/Sync%20simplification%20remove%20from%20cache.png" alt="Sync simplification — remove from cache flow" />
+  <img src="/ccProjects/Sync%20simplification%20you're%20offline.png" alt="Sync simplification — offline state" />
+</div>
+
+*Redesigned sync states: removing a file from local cache (left) and the offline warning before editing (right). Both were hidden or unclear in the previous design.*
 
 <div class="cs-stats">
   <div class="cs-stats__item cs-stats__item--blue">
@@ -90,27 +98,27 @@ The redesign collapsed those decisions into a saner default sync model.
 </div>
 
 <div class="cs-section-header" id="project-2">
-  <div class="cs-section-header__eyebrow">Project 02</div>
+  <div class="cs-section-header__eyebrow">Part 2</div>
   <div class="cs-section-header__title">Connected Enterprise</div>
 </div>
 
-Enterprises with hundreds of projects had been asking for a way to give people structured permission to create new projects — and to route those projects into a specific workspace rather than scattering them across the org. Without it, Projects didn't scale past a small team.
+Enterprises with hundreds of projects and assets were looking for a way to grant people structured permissions during project creation and to route those projects into a specific organization rather than scattering them across the enterprise. Without it, Projects didn't scale effectively beyond a small team.
 
 <div class="cs-nav-anchor" id="workspaces" data-label="Workspaces & permissions"></div>
 
 #### Workspaces & creation permissions
 
-I designed the flow that allows admins to permit users to create projects, route those projects into a chosen workspace, and — in cases where the creator can't choose — hand off workspace assignment to someone who can. The hard part wasn't any single screen. It was making the permission model legible to a designer who is just trying to start a project, rather than parsing org policy.
-
-<!-- IMAGE: Workspace selection / creation-permission flow -->
+I designed the flow that allows admins to grant users permission to create projects and route them to a chosen org. The hard part wasn't any single screen. It was making the permission model legible to a designer who is just trying to start a project, rather than parsing org policy or having to ask their admin.
 
 <div class="cs-nav-anchor" id="profiles" data-label="Consolidated profiles"></div>
 
 #### Consolidated profiles
 
-Enterprise users often live in multiple workspaces — agency work, freelance, and an in-house brand can all sit under the same Adobe identity. I designed consolidated profiles so a user's projects, workspaces, and permissions surface together in one identity-aware view rather than fragmenting across context-switches.
+Enterprise users often live in multiple workspaces — agency work, freelance, and an in-house brand can all sit under the same Adobe identity. I designed consolidated profiles so a user's projects, workspaces (organization), and permissions surface together in one identity-aware view rather than fragmenting across context switches.
 
-<!-- IMAGE: Consolidated profile / workspace switcher -->
+![Consolidated profiles and workspace switcher](/ccProjects/Consolidated%20profiles%26workspace%20switcher.jpg)
+
+*Consolidated profile view — projects, workspaces, and permissions in one identity-aware surface.*
 
 <div class="cs-nav-anchor" id="impact" data-label="Impact"></div>
 
@@ -125,7 +133,7 @@ Enterprise users often live in multiple workspaces — agency work, freelance, a
     <span class="cs-stats__number">376K</span>
     <span class="cs-stats__label">Projects MAU — up 27% from 295K</span>
   </div>
-  <div class="cs-stats__item cs-stats__item--gold">
+  <div class="cs-stats__item">
     <span class="cs-stats__number">+61%</span>
     <span class="cs-stats__label">CCI (Individuals) MAU growth — to 174K</span>
   </div>
@@ -135,14 +143,12 @@ Enterprise users often live in multiple workspaces — agency work, freelance, a
   </div>
 </div>
 
-The 82% paid concentration is the signal. Projects pulls users already invested in the suite into a workflow that ties them deeper across apps — exactly the cross-app stickiness the strategy was aiming for.
+The growth in Projects usage is a signal. It pulls users already invested in the suite into a workflow that ties them deeper across apps — exactly the cross-app stickiness the strategy was aiming for.
 
 <div class="cs-nav-anchor" id="what-i-learned" data-label="What I learned"></div>
 
 #### What I Learned
 
-Shipping before the ecosystem is ready is a real design constraint, not a failure mode. Several decisions on cards, file-type handling, and skeleton loading exist because we made the call to ship into Photoshop while other surfaces caught up — and the early feedback from users mid-workflow shaped the rest of the rollout in a way that a polished, simultaneous launch wouldn't have.
+Shipping before the ecosystem is ready is a real design constraint, not a failure mode. Several decisions on cards, file-type handling, and skeleton loading were made because we chose to ship it to Photoshop while other surfaces caught up, and early user feedback shaped the rest of the rollout in ways a polished, simultaneous launch wouldn't have.
 
-The unglamorous work is where the leverage lives. The sync simplification didn't ship with a marketing moment, but it cut data loss by 62% and dropped infrastructure cost by half. Every case study should have at least one of these.
-
-Twenty empty states sounds like a wasted week, but the empty state is the loudest moment in onboarding. Each one is a user's first read on whether this surface is for them.
+The unglamorous work is where the leverage lives. Sync simplification didn't ship with a marketing moment, but it cut data loss by 62% and reduced infrastructure costs by half; these small features matter, even though they can be a little boring.

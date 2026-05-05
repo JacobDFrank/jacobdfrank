@@ -1,11 +1,10 @@
 ---
 URLpath: /creative-cloud-libraries
 title: Creative Cloud Libraries
-published: false
 date: 2023-11-01
 description: Led design in expanding Creative Cloud Libraries, adding save to
-  libraries feature to Adobe Firefly and redesigning the Libraries & Brands
-  experience using Spectrum.
+    libraries feature to Adobe Firefly and redesigning the Libraries & Brands
+    experience using Spectrum.
 tags: Adobe / Product Design
 timePeriod: 2023–2024
 ---
@@ -19,7 +18,7 @@ Creative Cloud Libraries is the connective tissue of the Adobe ecosystem. It's h
 I led design on two projects that extended and modernized what Libraries could do: bringing save functionality to Adobe Firefly, and redesigning the Libraries & Brands experience on Adobe Home using the Spectrum Design System.
 
 <div class="cs-section-header" id="project-1">
-  <div class="cs-section-header__eyebrow">Project 01</div>
+  <div class="cs-section-header__eyebrow">Part 1</div>
   <div class="cs-section-header__title">Save to Libraries for Firefly</div>
 </div>
 
@@ -40,7 +39,7 @@ The integration surfaces at the moment a user decides they want an image. Hoveri
 
 From there, a dialog lets users choose an existing library or create a new one — with the option to set a default so repeat saves require no decisions at all. The full picker shows the user's complete library ecosystem: personal, shared, and team libraries, each labeled with its visibility level so users can confidently choose where an asset lands.
 
-<img src="/libraries/Move%20to%20library%20dialog.png" alt="Move to library dialog showing full library list in Firefly" style="margin-bottom:48px;" />
+<img src="/libraries/Move%20to%20library%20dialog.png" alt="Move to library dialog showing full library list in Firefly" />
 
 <div class="cs-nav-anchor" id="firefly-community" data-label="FF libraries feedback"></div>
 
@@ -58,7 +57,7 @@ The feature was picked up organically within days of launch. Users shared workfl
   <img src="/libraries/social/tweet-Scott.jpg" alt="Firefly headshots saved to CC Library then used in Photoshop" />
 </div>
 
-<img src="/libraries/social/tweet-Tom.png" alt="User thanking the team for the Libraries integration" style="margin-bottom:48px;" />
+<img src="/libraries/social/tweet-Tom.png" alt="User thanking the team for the Libraries integration" />
 
 <div class="cs-nav-anchor" id="firefly-impact" data-label="FF libraries impact"></div>
 
@@ -77,7 +76,7 @@ The feature was picked up organically within days of launch. Users shared workfl
     <span class="cs-stats__number">2.9%</span>
     <span class="cs-stats__label">of Firefly CC Paid MAU saving to Libraries (target: 5%)</span>
   </div>
-  <div class="cs-stats__item cs-stats__item--gold">
+  <div class="cs-stats__item">
     <span class="cs-stats__number">2,400+</span>
     <span class="cs-stats__label">users took saved assets into Photoshop, Illustrator, InDesign, or Express</span>
   </div>
@@ -96,7 +95,7 @@ The downstream usage is the most important number. Users weren't just saving to 
 <div class="cs-nav-anchor" id="libraries-brands" data-label="Libraries page redesign"></div>
 
 <div class="cs-section-header" id="project-2">
-  <div class="cs-section-header__eyebrow">Project 02</div>
+  <div class="cs-section-header__eyebrow">Part 2</div>
   <div class="cs-section-header__title">Libraries &amp; Brands Redesign</div>
 </div>
 
@@ -112,7 +111,7 @@ I redesigned the Libraries & Brands experience using the Spectrum Design System,
 
 **Modernized listing view.** The grid was rebuilt using Spectrum components, aligning the page visually and functionally with the broader Creative Cloud ecosystem. Users can now share libraries with collaborators, organize collections, edit library contents, and view optimized thumbnails — all without touching a desktop app.
 
-<img src="/libraries/Libraries%20on%20AH.png" alt="Libraries &amp; Brands page on Adobe Home" style="margin-bottom:64px;" />
+<img src="/libraries/Libraries%20on%20AH.png" alt="Libraries &amp; Brands page on Adobe Home" />
 
 <div class="cs-nav-anchor" id="what-i-learned" data-label="What I learned"></div>
 

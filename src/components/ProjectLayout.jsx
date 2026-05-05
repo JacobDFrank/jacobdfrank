@@ -15,7 +15,6 @@ const ArrowLeft = () => (
   </svg>
 );
 
-// Shown inside the "Other Projects" pill on mobile only
 const MenuIcon = () => (
   <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="cs-hn--pill__menu-icon">
     <path fillRule="evenodd" clipRule="evenodd" d="M1 3H15V4H1V3ZM1 7H15V8H1V7ZM15 11H1V12H15V11Z" fill="currentColor" />
@@ -41,8 +40,8 @@ const OrangePortal = () => {
       position: 'fixed',
       top:      '-300px',
       left:     '-300px',
-      width:    '140px',
-      height:   '140px',
+      width:    '107px',
+      height:   '107px',
     }}>
       <OrangeGlobe cs />
     </div>,
@@ -57,8 +56,28 @@ const ProjectLayout = ({ data, location }) => {
   const allProjects   = allMarkdownRemark.edges.map(e => e.node.frontmatter);
   const otherProjects = allProjects.filter(p => p.URLpath !== URLpath);
 
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen]     = useState(false);
+  const [flyoutStyle, setFlyoutStyle] = useState({});
   const menuRef = useRef(null);
+  const btnRef  = useRef(null);
+
+  const handleToggle = () => {
+    if (!menuOpen && btnRef.current) {
+      const r        = btnRef.current.getBoundingClientRect();
+      const itemH    = 47;
+      const approxH  = Math.min(otherProjects.length * itemH + 16, 320);
+      const spaceBelow = window.innerHeight - r.bottom - 8;
+      const showBelow  = spaceBelow >= approxH;
+      setFlyoutStyle({
+        position: 'fixed',
+        right:  `${window.innerWidth - r.right}px`,
+        ...(showBelow
+          ? { top:    `${r.bottom + 8}px` }
+          : { bottom: `${window.innerHeight - r.top + 8}px` }),
+      });
+    }
+    setMenuOpen(v => !v);
+  };
 
   // Close flyout on outside click
   useEffect(() => {
@@ -93,14 +112,15 @@ const ProjectLayout = ({ data, location }) => {
                 {otherProjects.length > 0 && (
                   <div className="cs-projects-menu" ref={menuRef}>
                     <button
-                      className="cs-hn cs-hn--pill"
-                      onClick={() => setMenuOpen(v => !v)}
+                      ref={btnRef}
+                      className="cs-hn cs-hn--pill cs-hn--pill--icon-only"
+                      onClick={handleToggle}
                       aria-expanded={menuOpen}
                       aria-haspopup="listbox"
+                      aria-label="Other projects"
                       type="button"
                     >
                       <MenuIcon />
-                      Other Projects
                     </button>
 
                     {menuOpen && (
@@ -108,6 +128,7 @@ const ProjectLayout = ({ data, location }) => {
                         className="cs-projects-flyout"
                         role="listbox"
                         aria-label="Other projects"
+                        style={flyoutStyle}
                       >
                         {otherProjects.map(p => (
                           <a

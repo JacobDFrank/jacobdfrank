@@ -459,8 +459,8 @@ section.content {
         top:   50%;
         right: -64px;
         transform: translateY(-55%);
-        width:  320px;  // 20 % smaller than the original 400px
-        height: 320px;
+        width:  107px;
+        height: 107px;
         z-index: 0;           // behind the text (which has no z-index / stacks above)
         pointer-events: none; // don't block clicks on the text
 
@@ -468,8 +468,8 @@ section.content {
                 drop-shadow(0 4px 16px rgba(0, 0, 0, 0.30));
 
         @media screen and (max-width: $md) {
-            width:  240px;  // 20 % smaller than the original 300px
-            height: 240px;
+            width:  80px;
+            height: 80px;
             right:  -48px;
         }
 
@@ -485,8 +485,8 @@ section.content {
 // bottom-right after a short delay. Three.js reads clientWidth/Height (140px)
 // before that happens so the canvas is sized correctly from the start.
 .orange-globe-cs {
-    width:  140px;
-    height: 140px;
+    width:  107px;
+    height: 107px;
     cursor: grab;
 }
 

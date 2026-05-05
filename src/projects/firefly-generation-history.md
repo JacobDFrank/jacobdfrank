@@ -1,21 +1,21 @@
 ---
 URLpath: /firefly-generation-history
 title: Firefly Generation History
-published: false
 date: 2025-02-15
 description: Designed Generation History's shift from browser cache to cloud,
-  delivering persistent asset storage and cross-app access for 900M+ Firefly
-  generations.
+    delivering persistent asset storage and cross-app access for 900M+ Firefly
+    generations.
 tags: Adobe / Product Design
 timePeriod: Jan–Feb 2025
 ---
+
 <div class="cs-nav-anchor" id="overview" data-label="Overview"></div>
 
 #### Overview
 
-Firefly is Adobe's AI asset generation platform for images, video, audio, and more. Generation History is where these assets live. Before this project, those assets lived solely in the browser’s cache, on a single machine, gone the moment you cleared your cookies.
+Firefly is Adobe's AI asset generation platform for images, video, audio, and more. Generation History is where these assets live. Before this project, those assets lived solely in the browser's cache, on a single machine, gone the moment you cleared your cookies.
 
-I led design on the transformation of Generation History, moving it from a browser artifact to a persistent cloud collection, providing a set of actions (sharing, favoriting, downloading, and more), and extending it into Adobe’s flagship apps so users could continue work across tools without having to download the assets.
+I led design on the transformation of Generation History, moving it from a browser artifact to a persistent cloud collection, providing a set of actions (sharing, favoriting, downloading, and more), and extending it into Adobe's flagship apps so users could continue work across tools without having to download the assets.
 
 The page supported **900M+ generations** to date. After launch, MAU grew by 56% and asset reuse by 61%.
 
@@ -25,11 +25,11 @@ The page supported **900M+ generations** to date. After launch, MAU grew by 56% 
 
 #### The problem
 
-The original Generation History was stored in the browser’s cache and was accessible only on the device where it was created. Clear your cache or switch devices, and your history will be gone. There was no way to return to a generation, share it with someone, or bring it into Photoshop without downloading and manually re-importing it.
+The original Generation History was stored in the browser's cache and was accessible only on the device where it was created. Clear your cache or switch devices, and your history will be gone. There was no way to return to a generation, share it with someone, or bring it into Photoshop without downloading and manually re-importing it.
 
 The gap mattered more than it might seem. Firefly is positioned as a creative starting point, a place to generate the raw material that gets refined in Illustrator, composited in Photoshop, or animated in Express.
 
-The design challenge: move an ephemeral, cache-bound system to a persistent cloud model, then build the interface that makes that shift feel like a feature rather than infrastructure.
+> The design challenge: move an ephemeral, cache-bound system to a persistent cloud model, then build the interface that makes that shift feel like a feature rather than infrastructure.
 
 <div class="cs-nav-anchor" id="cards-and-actions" data-label="Cards & actions"></div>
 
@@ -39,13 +39,13 @@ The foundation of Generation History is the card: how a generated asset is displ
 
 The action set for each asset:
 
-* **Share**: generate a public link for sharing generations outside of Adobe
-* **Favorite**: bookmark individual assets for quick access in the favorites tab
-* **Copy link**: copy a direct URL to a specific generation
-* **Add to (Move)**: send assets to CC Libraries or other folders
-* **Download**: in original format, per asset type
-* **Delete**: with confirmation state to prevent accidental loss
-* **Multiple Open in actions**: a user could open the asset in boards, Ps Web or Express
+- **Share** — Generate a public link for sharing generations outside of Adobe
+- **Favorite** — Bookmark individual assets for quick access in the favorites tab
+- **Copy link** — Copy a direct URL to a specific generation
+- **Add to / Move** — Send assets to CC Libraries or other collections
+- **Download** — In original format, per asset type
+- **Delete** — With confirmation state to prevent accidental loss
+- **Open in** — Continue work in Boards, Photoshop Web, or Express directly from a generation
 
 <div class="cs-image-row cs-image-row--2">
   <img src="/generationHistory/Actions%20in%20Firefly.png" alt="Action menu on a Generation History card in Firefly" />
@@ -70,11 +70,13 @@ The intent was to eliminate the download-and-import step entirely. A user could 
 
 #### Constraints & tradeoffs
 
-This project had two fixed external deadlines: **Adobe MAX London** and **Adobe MAX Los Angeles**. Engineering bandwidth was limited in ways that mattered to design; specifically, scope restrictions on how much the card component could change. Spectrum components have real flexibility, but moving fast on a shared system means some visual customization gets deferred.
+1. **Fixed deadlines, limited engineering scope**
 
-I spent time early mapping which design decisions were load-bearing (asset type differentiation, action availability states, error handling) versus which were cosmetic (card proportions, thumbnail treatment). Prioritizing the former kept the engineering path clear while preserving the decisions that affected usability.
+   Two non-negotiable ship dates — Adobe MAX London and Adobe MAX Los Angeles — shaped the entire project. Engineering bandwidth was constrained, specifically around how much the card component could change. I mapped which design decisions were load-bearing (asset type differentiation, action availability states, error handling) versus cosmetic (card proportions, thumbnail treatment) and prioritized the former to keep the engineering path clear.
 
-The other constraint: designing for image, video, and audio simultaneously without creating three divergent systems. Shared card components meant shared interaction patterns, and the differentiation between asset types lived in metadata and actions rather than in card architecture.
+2. **Three asset types, one system**
+
+   Designing for image, video, and audio simultaneously without creating three divergent systems. Shared card components meant shared interaction patterns — differentiation between asset types lived in metadata and actions, not card architecture.
 
 <div class="cs-nav-anchor" id="impact" data-label="Impact"></div>
 
@@ -105,8 +107,14 @@ The reuse number is what matters. MAU tells you people showed up; reuse tells yo
 
 #### What I Learned
 
-The real product shift wasn't storage; it was intent. Moving Generation History to the cloud was the enabling infrastructure, but the growth in reuse only happened because the assets were surfaced where work actually happens. 
+1. **The shift was about intent, not storage**
 
-Designing under a shared Spectrum system with constrained engineering time forced prioritization that was genuinely useful. When you can't change everything, you have to decide what the design actually depends on. That pressure clarified which decisions were about the experience and which were about appearance.
+   Moving Generation History to the cloud was the enabling infrastructure, but the growth in reuse only happened because the assets were surfaced where work actually happens. Embedding Generation History in Photoshop wasn't an incremental improvement — it was a different product proposition: your Firefly outputs as a resource within your existing Creative Cloud workflow.
 
-Designing for three asset types at once is harder than it looks, and easier than doing it three times separately. Starting from a unified model — same card, same action patterns, differentiation only where truly needed — produced a system that's extensible in ways a type-by-type approach wouldn't have been.
+2. **Constraints clarify what the design actually depends on**
+
+   Designing under a shared system with limited engineering time forced useful prioritization. When you can't change everything, you have to decide what the design actually depends on. That pressure clarified which decisions were about the experience and which were about appearance. The card system is better for it.
+
+3. **A unified model beats type-by-type design every time**
+
+   Designing for three asset types at once is harder than it looks, and easier than doing it three times separately. Starting from a unified model — same card, same action patterns, differentiation only where truly needed — produced a system that's extensible in ways a type-by-type approach wouldn't have been.
