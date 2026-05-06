@@ -1,0 +1,12 @@
+{
+  "word_diff_enabled": true,
+  "tasks": {
+    "enabled": true
+  },
+  "inlay_hints": {
+    "show_value_hints": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true
+  }
+}
