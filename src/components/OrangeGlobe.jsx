@@ -166,7 +166,7 @@ const OrangeGlobe = ({ cs = false }) => {
       }
       const onUp = () => {
         isDragging = false
-        mount.style.cursor = 'grab'
+        mount.style.cursor = 'pointer'
       }
 
       mount.addEventListener('mousedown', onDown)
@@ -263,7 +263,7 @@ const OrangeGlobe = ({ cs = false }) => {
       ref={mountRef}
       className={cs ? 'orange-globe-cs' : 'orange-globe'}
       aria-hidden="true"
-      style={{ cursor: 'grab' }}
+      style={{ cursor: 'pointer' }}
     />
   )
 }

@@ -64,16 +64,10 @@ const ProjectLayout = ({ data, location }) => {
   const handleToggle = () => {
     if (!menuOpen && btnRef.current) {
       const r        = btnRef.current.getBoundingClientRect();
-      const itemH    = 47;
-      const approxH  = Math.min(otherProjects.length * itemH + 16, 320);
-      const spaceBelow = window.innerHeight - r.bottom - 8;
-      const showBelow  = spaceBelow >= approxH;
       setFlyoutStyle({
         position: 'fixed',
-        right:  `${window.innerWidth - r.right}px`,
-        ...(showBelow
-          ? { top:    `${r.bottom + 8}px` }
-          : { bottom: `${window.innerHeight - r.top + 8}px` }),
+        left:   `${Math.max(8, r.left - 24)}px`,
+        top:    `${r.bottom + 8}px`,
       });
     }
     setMenuOpen(v => !v);
@@ -103,17 +97,11 @@ const ProjectLayout = ({ data, location }) => {
 
               {/* Breadcrumb + Other Projects flyout on one line */}
               <div className="cs-page-header-nav">
-                <nav className="cs-hn cs-hn--breadcrumb" aria-label="Breadcrumb">
-                  <a href="/" className="cs-hn__crumb-home">Jacob Frank</a>
-                  <span className="cs-hn__sep" aria-hidden="true">/</span>
-                  <span className="cs-hn__crumb-current">{title}</span>
-                </nav>
-
                 {otherProjects.length > 0 && (
                   <div className="cs-projects-menu" ref={menuRef}>
                     <button
                       ref={btnRef}
-                      className="cs-hn cs-hn--pill cs-hn--pill--icon-only"
+                      className="cs-hn cs-hn--pill cs-hn--pill--icon-only cs-hn--pill--plain-trigger"
                       onClick={handleToggle}
                       aria-expanded={menuOpen}
                       aria-haspopup="listbox"
@@ -130,6 +118,16 @@ const ProjectLayout = ({ data, location }) => {
                         aria-label="Other projects"
                         style={flyoutStyle}
                       >
+                        <a
+                          href="/"
+                          className="cs-projects-flyout__item"
+                          role="option"
+                        >
+                          Home
+                        </a>
+                        <div className="cs-projects-flyout__heading cs-hn__crumb-current">
+                          Other projects
+                        </div>
                         {otherProjects.map(p => (
                           <a
                             key={p.URLpath}
@@ -144,6 +142,12 @@ const ProjectLayout = ({ data, location }) => {
                     )}
                   </div>
                 )}
+
+                <nav className="cs-hn cs-hn--breadcrumb" aria-label="Breadcrumb">
+                  <a href="/" className="cs-hn__crumb-home">Jacob Frank</a>
+                  <span className="cs-hn__sep" aria-hidden="true">/</span>
+                  <span className="cs-hn__crumb-current">{title}</span>
+                </nav>
               </div>
 
               {/* Eyebrow: time period above the title */}

@@ -817,7 +817,22 @@
 .cs-projects-menu {
     position:    relative;
     flex-shrink: 0;
-    margin-left: auto; // always push to right side
+
+    // Left-side icon trigger (no circle/pill visuals)
+    .cs-hn--pill--plain-trigger {
+        width: auto;
+        height: auto;
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        border: 0 !important;
+        color: rgba(255, 255, 255, 0.7);
+
+        &:hover {
+            background: transparent;
+            color: #fff;
+        }
+    }
 }
 
 // iOS-style dropdown: blurred glass panel, rounded, row-per-project.
@@ -841,6 +856,20 @@
     // Spring entrance — matches iOS contextual menus
     animation:        flyout-in 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     transform-origin: top right;
+
+    &__heading {
+        padding: 12px 18px 10px;
+        font-family: $mono;
+        font-size: 13px;
+        line-height: 1.4;
+        letter-spacing: 0.02em;
+        color: rgba(255, 255, 255, 0.35);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        pointer-events: none;
+    }
 
     &__item {
         display:     block;

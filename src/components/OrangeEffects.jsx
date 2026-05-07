@@ -217,6 +217,12 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
   let hasDrifted    = false;
   let originalParent = null;
   let glTime        = 0;
+  const setCursorStateClass = (state) => {
+    if (typeof document === 'undefined') return;
+    document.body.classList.remove('orange-native-pointer', 'orange-native-grabbing');
+    if (state === 'pointer') document.body.classList.add('orange-native-pointer');
+    if (state === 'grabbing') document.body.classList.add('orange-native-grabbing');
+  };
 
   const glRipple = initRippleGL();
 
@@ -311,7 +317,7 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
       right:         'auto',
       transform:     'none',
       pointerEvents: 'auto',
-      cursor:        'grab',
+      cursor:        'pointer',
       zIndex:        '1000',
       transition:    'none',
     });
@@ -321,6 +327,8 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
 
     el.addEventListener('mousedown',  onDragStart);
     el.addEventListener('touchstart', onDragStart, { passive: true });
+    el.addEventListener('mouseenter', onOrangeEnter);
+    el.addEventListener('mouseleave', onOrangeLeave);
   }, delay);
 
   animId = requestAnimationFrame(physicsLoop);
@@ -342,6 +350,7 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
     velX = 0; velY = 0;
     const el = orangeRef.current;
     if (el) el.style.cursor = 'grabbing';
+    setCursorStateClass('grabbing');
   };
 
   const onDragMove = (e) => {
@@ -371,7 +380,8 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
     isDragging = false;
     dragSpeed  = 0;
     const el = orangeRef.current;
-    if (el) el.style.cursor = 'grab';
+    if (el) el.style.cursor = 'pointer';
+    setCursorStateClass('pointer');
     if (throwSamples.length >= 2) {
       const a  = throwSamples[throwSamples.length - 2];
       const b  = throwSamples[throwSamples.length - 1];
@@ -389,6 +399,13 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
   window.addEventListener('touchmove',  onDragMove, { passive: true });
   window.addEventListener('touchend',   onDragEnd);
 
+  const onOrangeEnter = () => {
+    if (!isDragging) setCursorStateClass('pointer');
+  };
+  const onOrangeLeave = () => {
+    if (!isDragging) setCursorStateClass(null);
+  };
+
   // ── Cleanup ───────────────────────────────────────────────────────────────
   return () => {
     clearTimeout(settleTimer);
@@ -404,10 +421,13 @@ const startDrift = (orangeRef, isSettledRef, opts = {}) => {
     if (el) {
       el.removeEventListener('mousedown',  onDragStart);
       el.removeEventListener('touchstart', onDragStart);
+      el.removeEventListener('mouseenter', onOrangeEnter);
+      el.removeEventListener('mouseleave', onOrangeLeave);
       if (reparent && hasDrifted && originalParent) originalParent.appendChild(el);
       ['position','width','height','top','left','right','transform',
        'pointerEvents','cursor','zIndex','transition'].forEach(p => { el.style[p] = ''; });
     }
+    setCursorStateClass(null);
   };
 };
 

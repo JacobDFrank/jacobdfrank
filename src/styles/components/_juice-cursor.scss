@@ -7,6 +7,21 @@ body.has-juice-cursor * {
     cursor: none !important;
 }
 
+body.has-juice-cursor.orange-native-pointer,
+body.has-juice-cursor.orange-native-pointer * {
+    cursor: grab !important;
+}
+
+body.has-juice-cursor.orange-native-grabbing,
+body.has-juice-cursor.orange-native-grabbing * {
+    cursor: grabbing !important;
+}
+
+body.has-juice-cursor.orange-native-pointer .juice-cursor,
+body.has-juice-cursor.orange-native-grabbing .juice-cursor {
+    display: none !important;
+}
+
 .juice-cursor {
     position: fixed;
     left: 0;
