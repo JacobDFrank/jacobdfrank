@@ -6,6 +6,7 @@ import Intro from '../components/Intro';
 import MoreAboutMe from '../components/MoreAboutMe';
 import { OrangeProvider } from '../contexts/OrangeContext';
 import OrangeEffects from '../components/OrangeEffects';
+import HomeFluidBackground from '../components/HomeFluidBackground';
 
 /**
  * Homepage
@@ -16,6 +17,7 @@ import OrangeEffects from '../components/OrangeEffects';
 const IndexPage = () => (
   <OrangeProvider>
     <OrangeEffects />
+    <HomeFluidBackground />
     <Layout>
       <Intro />
       <Archive />

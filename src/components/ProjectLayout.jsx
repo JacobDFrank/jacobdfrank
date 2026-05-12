@@ -7,6 +7,7 @@ import StatsCountUp from './StatsCountUp';
 import OrangeGlobe from './OrangeGlobe';
 import OrangeEffects from './OrangeEffects';
 import { OrangeProvider } from '../contexts/OrangeContext';
+import HomeFluidBackground from '../components/HomeFluidBackground';
 import { graphql } from 'gatsby';
 
 const ArrowLeft = () => (
@@ -42,6 +43,7 @@ const OrangePortal = () => {
       left:     '-300px',
       width:    '107px',
       height:   '107px',
+      zIndex:   9999,
     }}>
       <OrangeGlobe cs />
     </div>,
@@ -88,6 +90,7 @@ const ProjectLayout = ({ data, location }) => {
   return (
     <OrangeProvider>
       <OrangeEffects variant="small" />
+      <HomeFluidBackground />
       <OrangePortal />
 
       <Layout location={location}>

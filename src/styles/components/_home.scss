@@ -27,6 +27,21 @@ body {
     color: $color-primary;
 }
 
+// WebGL fluid (homepage): sits behind Gatsby root; content stacks above.
+body.has-home-fluid .home-fluid-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+body.has-home-fluid #gatsby-focus-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
 /* Blur + fade-in, top → bottom (all pages via Layout). Sync stagger with Layout.jsx PAGE_ENTRANCE_STAGGER_S. */
 @keyframes page-entrance-blur {
     from {

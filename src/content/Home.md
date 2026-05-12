@@ -2,15 +2,12 @@
 title: Home
 intro: Jacob Frank
 about1: >-
-    I'm a Brooklyn based designer, prototyper, and occasional engineer who takes
-    bike rides down hills, walks up big ones, and eats a lot of oranges.
+    I'm a Brooklyn based designer, prototyper, and occasional engineer wokring at <a href="http://adobe.com/">Adobe</a>. I take
+    bike rides down hills, walk up big ones, and eat a lot of oranges.
 
     <br><br>
 
-    Currently, I'm a senior product designer at Adobe working on assets and collaboration.
-
-
-    Previously, I worked on <a href="http://spectrum.adobe.com/">Adobe's design system, Spectrum</a> and, <a href="http://sfserviceguide.org">SF Service Guide</a> where I lead a team of volunteer designers.
+    Currently, I'm a senior product designer working on assets and collaboration. Previously, I worked on <a href="http://spectrum.adobe.com/">Adobe's design system, Spectrum</a> and, <a href="http://sfserviceguide.org">SF Service Guide</a> where I lead a team of volunteer designers.
 about2: >-
     Prior to Adobe I studied at <a href="https://www.rit.edu/">RIT</a> and
     graduated from <a href="https://www.rit.edu/academicaffairs/sois/">the School
