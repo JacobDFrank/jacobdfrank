@@ -23,7 +23,7 @@ body {
     overflow-x: hidden;
     font-family: $mono;
     -webkit-font-smoothing: antialiased;
-    font-smoothing: antialiased;
+    font-smooth: antialiased;
     color: $color-primary;
 }
 
@@ -536,15 +536,15 @@ section.content {
         font-size: 2.75rem;
     }
 
-    canvas.tease {
-        -webkit-transform: translate3d(0, -50%, 0) scale(1.1);
-        transform: translate3d(0, -50%, 0) scale(1.1);
-    }
+    // canvas.tease {
+    //     -webkit-transform: translate3d(0, -50%, 0) scale(1.1);
+    //     transform: translate3d(0, -50%, 0) scale(1.1);
+    // }
 
-    canvas {
-        -webkit-transform: translate3d(0, -50%, 0) scale(1.3);
-        transform: translate3d(0, -50%, 0) scale(1.3);
-    }
+    // canvas {
+    //     -webkit-transform: translate3d(0, -50%, 0) scale(1.3);
+    //     transform: translate3d(0, -50%, 0) scale(1.3);
+    // }
 }
 
 @media screen and (min-width: 768px) {
