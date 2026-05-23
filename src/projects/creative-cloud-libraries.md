@@ -1,7 +1,7 @@
 ---
 URLpath: /creative-cloud-libraries
 title: Creative Cloud Libraries
-published: false
+published: true
 date: 2023-11-01
 description: Led design in expanding Creative Cloud Libraries, adding save to
   libraries feature to Adobe Firefly and redesigning the Libraries & Brands
